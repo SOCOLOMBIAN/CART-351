@@ -31,3 +31,8 @@ print(type(responseData))
 #11. each item represent dicitionary entries of montreal
 for item in responseData:
     print(item)
+
+# a dict
+print(type(responseData)) 
+#get the keys
+print(responseData.keys())
