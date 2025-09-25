@@ -82,10 +82,15 @@ iaqi_value= response_data_feed ['iaqi']
 print("type of item:", type(iaqi_value))
 print (iaqi_value.keys())
 
-
+#acces to dominant pollutant to get it value from iaqi field
 print (f"value for dominant pollutant: {dominentpol_value}")
 
+# value for dominant pollutant: pm25
 for pollutant_item in response_data_feed["iaqi"]:
     print(pollutant_item)
 
-#7 
+#7 explain
+# use the requests for the API calls 
+# the procces can be to create identifiers of the cities 
+# a loop that goes troughout all the cities 
+# extract the coordinates of each station and the dominant pollutant 
