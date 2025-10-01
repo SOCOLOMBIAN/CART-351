@@ -1,0 +1,21 @@
+h1 {
+    color:  purple;
+    text-align: center;
+}
+
+P {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+}
+
+dt {
+    line-height: 1.8;
+    color: purple
+}
+
+dd {
+
+    text-indent: 1px;
+    line-height: 1.8;
+    
+}
