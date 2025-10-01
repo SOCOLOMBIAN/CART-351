@@ -5,17 +5,22 @@ h1 {
 
 P {
     font-family:Georgia, 'Times New Roman', Times, serif;
-    font-size: 15px;
+    font-size: 18px;
 }
 
-dt {
-    line-height: 1.8;
-    color: purple
+
+li {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 18px;
 }
 
-dd {
+.image-row {
+    display:flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
 
-    text-indent: 1px;
-    line-height: 1.8;
-    
+.image-row img {
+    width: 50%;           
+    height: auto;
 }
