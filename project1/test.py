@@ -1,7 +1,7 @@
 #import the request for the weather
 import requests
 
-city= imput("enter a city name: ")
+city= imput(" bucaramanga ")
 
 #write the api key for the open weather
 api_key="629f1cc3c63fee4339bef39db763aff1"
