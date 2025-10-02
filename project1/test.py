@@ -1,14 +1,10 @@
-#import the request for the weather
+#print("hello world")
+
+# call for the request
 import requests
 
-city= imput(" bucaramanga ")
+#add my key for the weather API 
+api_token= "79809a7dd45c290747d082657bd73fcaedfdd200"
 
-#write the api key for the open weather
-api_key="629f1cc3c63fee4339bef39db763aff1"
 
-#get the website url 
-url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
 
-response= requests.get(url)
-data= response.json()
-print(data)
