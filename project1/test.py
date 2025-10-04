@@ -22,13 +22,22 @@ print(f"Goal: find the perfect city with the temperature and air quality necessa
 name = input ("write your name: ")
 user_city = input("type the name of a city: ")
 
+#looping
+game_win= False
+
+while not game_win:
+    user_city = input("type the name of a city: ")
+
 #url for the wesite weatherApi
 url = f"https://api.waqi.info/search/?token={token}&keyword={user_city}"
 response= requests.get(url)
 data= response.json()
 
-print(data)
+#check the data available fro the city, sometimes city is not available 
+if data['status'] != 'ok' or len(data['data']) == 0:
+    print(f" your search for {user_city} was not found, try typing another city! 🙂 ")
 
+print(data)
 
 station_uid = data['data'][0]['uid']
 
