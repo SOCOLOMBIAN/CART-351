@@ -76,6 +76,7 @@ while game_win == False:
 #check if the status of the city is good, if not find the user needs to write the name of another city
     if feed_data['status'] != 'ok':
         print( Fore.RED + f" your search for {station_name} was not found, try typing another city! 🙂 ")
+        continue
 
 # getting the important part of data the air quality and the temperature 
     response_data_feed = feed_data ['data']
@@ -90,17 +91,17 @@ while game_win == False:
 
 #temperature conditions with color
     if temp_good:
-        print(Fore.GREEN + f"temperature: {temp} is perfect")
-    elif temp_min <temp_min:
-        print(Fore.BLUE + f"temperature: {temp} too cold ❄️ ")
+        print(Fore.GREEN + f" temperature: {temp} is perfect")
+    elif temp > temp_min:
+        print(Fore.BLUE + f" temperature: {temp} too cold ❄️ ")
     else:
-        print(Fore.RED + f"temperature: {temp} too hot 🔥 ")
+        print(Fore.RED + f" temperature: {temp} too hot 🔥 ")
     
     #air quality conditions with color 
     if aqi_good:
-        print(Fore.GREEN + f"temperature: {aqi} is perfect")
+        print(Fore.GREEN + f" air quality: {aqi} is perfect")
     elif aqi <aqi_min:
-        print(Fore.BLUE + f"air quality: {aqi} too clean 🌬️ ")
+        print(Fore.BLUE + f" air quality: {aqi} too clean 🌬️ ")
     else:
         print(Fore.RED + f" Air quality: {aqi} too polluted 💨 ")
         
@@ -116,7 +117,7 @@ while game_win == False:
         print(Fore.GREEN + f"\n  💨air pollution: level {aqi}")
         game_win = True
     else:
-        print( Fore.RED + Style.BRIGHT + " keep trying, type another city")
+        print( Fore.RED + Style.BRIGHT + "keep trying, type another city")
 
     
     
