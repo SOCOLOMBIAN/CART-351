@@ -38,6 +38,7 @@ print(Fore.CYAN + "="* 60)
 #looping
 game_win= False
 
+#looping starting game 
 while game_win == False:
     user_city = input( Fore.YELLOW + "\ntype the name of a city: " + Style.RESET_ALL)
 
@@ -54,16 +55,16 @@ while game_win == False:
 
 #check the data available for the city, sometimes city is not available 
     if data['status'] != 'ok' or len(data['data']) == 0:
-        print(f" your search for {user_city} was not found, try typing another city! 🙂 ")
+        print(Fore.RED + f"your search for {user_city} was not found, try typing another city! 🙂 ")
+        continue #this suggestion was with the ressource of debugging with AI since the code did not continue to work 
     
-
 #get the station uid  (the number of the location an unique id)
     station_uid = data['data'][0]['uid']
     station_name= data['data'][0]['station']['name']
     print(station_name)
     print(station_uid)
 
-#checking the city 
+#checking the city that the user imput 
     print(Fore.CYAN + f"\n Found station {station_name}")
 
 #information of the station 
@@ -74,7 +75,7 @@ while game_win == False:
 
 #check if the status of the city is good, if not find the user needs to write the name of another city
     if feed_data['status'] != 'ok':
-        print(f" your search for {station_name} was not found, try typing another city! 🙂 ")
+        print( Fore.RED + f" your search for {station_name} was not found, try typing another city! 🙂 ")
 
 # getting the important part of data the air quality and the temperature 
     response_data_feed = feed_data ['data']
@@ -84,19 +85,38 @@ while game_win == False:
 
 #check the condtions of the temperature
     temp_good= temp_min <= temp <= temp_max
-    print(temp_good)
+    #print(temp_good)
     aqi_good=  aqi_min <= aqi <= aqi_max
 
+#temperature conditions with color
+    if temp_good:
+        print(Fore.GREEN + f"temperature: {temp} is perfect")
+    elif temp_min <temp_min:
+        print(Fore.BLUE + f"temperature: {temp} too cold ❄️ ")
+    else:
+        print(Fore.RED + f"temperature: {temp} too hot 🔥 ")
+    
+    #air quality conditions with color 
+    if aqi_good:
+        print(Fore.GREEN + f"temperature: {aqi} is perfect")
+    elif aqi <aqi_min:
+        print(Fore.BLUE + f"air quality: {aqi} too clean 🌬️ ")
+    else:
+        print(Fore.RED + f" Air quality: {aqi} too polluted 💨 ")
+        
 
 #check if the condtions are truth or false
     if temp_good and aqi_good:
-        print(f"Congratulations {name}")
-        print(f"you found the perfect city {user_city}")
-        print(f" tempearature{temp}")
-        print(f" air pollution level {aqi}")
+        
+        print( "\n" + Fore.CYAN + "="* 60)
+        print(Fore.YELLOW + Style.BRIGHT + f"Congratulations!! 🎉 {name}")
+        print( "\n" + Fore.CYAN + "="* 60)
+        print(Fore.CYAN + f"you found the perfect city {user_city}")
+        print(Fore.GREEN + f"\n 🌡️ tempearature: {temp}")
+        print(Fore.GREEN + f"\n  💨air pollution: level {aqi}")
         game_win = True
     else:
-        print( Fore.RED + " keep trying, type another city")
+        print( Fore.RED + Style.BRIGHT + " keep trying, type another city")
 
     
     
