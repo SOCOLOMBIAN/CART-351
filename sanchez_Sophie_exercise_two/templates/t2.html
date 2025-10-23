@@ -2,9 +2,11 @@
 {% extends "base.html" %} 
 {% block content %}
 
-
+   <!-- Container for the form -->
   <div class="form-container">
     <h3>Submit Information</h3>
+
+    <!-- Form that sends data to the thank_you_t2 route -->
     <form method="GET" action="{{ url_for('thank_you_t2') }}">
       
       <div class="form-group">
@@ -22,6 +24,7 @@
         <textarea id="description" name="description" rows="5" required></textarea>
       </div>
 
+      <!-- Submit button -->
       <button type="submit">Submit</button>
     </form>
   </div>

@@ -14,6 +14,7 @@ def index():
 def t1():
       the_topic = "donuts"
       number_of_donuts = 28
+       # Dictionary with donut data
       donut_data= {
       "flavours":["Regular", "Chocolate", "Blueberry", "Devil's Food"],
       "toppings": ["None","Glazed","Sugar","Powdered Sugar",
@@ -36,12 +37,15 @@ def t2():
 def thank_you_t2():
     app.logger.info(request.args)
     
+    # Get data from the form using GET method
     firstname = request.args["firstname"]
     donut = request.args["donut"]
     description= request.args["description"]
     
+    # Combine all the data into one string
     combined = firstname + " " + donut + " " + description
     
+    # Replace vowels with '*' in the combined string
     vowels= "aeiou"
     modified= ""
     for names in combined:
@@ -49,9 +53,9 @@ def thank_you_t2():
             modified += "*"
         else:
             modified += names
-        
+    
+    # Render thankyou_t2.html and show the modified result    
     return render_template("thankyou_t2.html",result=modified)
-
 
 #run
 app.run(debug=True)
