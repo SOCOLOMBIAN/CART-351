@@ -1,0 +1,60 @@
+<!-- will be a child of index-->
+{% extends "base.html" %}
+ 
+{% block content %}
+    <section class = "continue">
+        <h1> Welcome to the {{the_topic}} online shop  </h1>
+
+        {% block pine %}
+     
+        <!-- Conditional logic: checks if the number of donuts available is greater than 20 -->
+        {% if number_of_donuts > 20 %}
+            <p class> can you give me {{number_of_donuts}} donuts to takeout please? </p>
+        {%else%}
+            <p>sorry we dont have all those {{number_of_donuts}} donuts available today.</p>
+        {%endif%}
+
+        <h3> Donut Menu </h3>
+
+        <div class= "donut-menu">
+
+         <!-- Loop through all donut flavours from the donut_data object -->
+        {%for flavour in donut_data.flavours%}
+            <div class="donut-item">
+
+                <!-- Conditional logic: display a different image depending on the donut flavour -->
+                {%if flavour== "Chocolate" %}
+                    <img src="{{ url_for('static',filename='images/donut_a.png') }}" alt= "Chocolate-Donut" class="donut-img">
+                {%elif flavour== "Regular" %}
+                    <img src="{{ url_for('static',filename='images/donut_c.png') }}" alt= "Regular-Donut">
+                {%elif flavour== "Blueberry" %}
+                     <img src="{{ url_for('static',filename='images/donut_e.png') }}" alt= "Blueberry-Donut">
+                {%elif flavour== "Devil's Food" %}
+                    <img src="{{ url_for('static',filename='images/donut_pink.png') }}" alt="Devil's Food">
+                {% endif %}
+
+                <h4> {{flavour}} </h4>               
+            </div>
+        {%endfor%}
+        
+         <!-- Section: list of available toppings -->
+        <h3> 🍬 available Toppings 🍬 </h3>
+        <ul class="toppings-list">
+            {% for topping in donut_data.toppings %}
+                <li>{{topping}}</li>
+            {%endfor%}
+        </ul>
+        
+        <!-- Section: list of ice cream options -->
+        <h3> 🍦 some ice cream? 🍦 </h3>
+        <ul class="icecream-list">
+            {% for flavor in icecream_flavors %}
+                <li>{{flavor}}</li>    
+            {%endfor%}
+        </ul>
+               
+        {% endblock pine %}
+    </section>
+ {% endblock content %}
+
+

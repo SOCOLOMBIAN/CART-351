@@ -5,8 +5,9 @@
 
 body{
     font-family: "Roboto", sans-serif;
-   
+ 
 }
+
 h2{
 
     font-size:32px;
@@ -14,6 +15,20 @@ h2{
     background-color:rgb(167, 69, 112);
     color: rgb(255,255,255);
 }
+
+h3 {
+    color: palevioletred;
+    margin: 20px;
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+p {
+    color: black;
+    margin: 10px;
+    font-size: 20px;   
+}
+
 nav{
     padding-bottom:5px;
     background-color:rgb(167, 69, 112);
@@ -49,3 +64,65 @@ footer{
        color: rgb(255,255,255);
 
 }
+
+.donut-item {
+    background: white;
+    border: 2px solid fuchsia;
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+}
+
+.donut-item img{
+    width: 70%;
+    max-width:100px;
+    height: auto;
+}
+
+.toppings-list {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    padding: 5px;
+}
+
+.toppings-list li {
+
+    background: palevioletred;
+    padding: 12px;
+    border-radius: 2px;
+    padding: 5px;
+}
+
+.icecream-list {
+    display: grid;
+    gap: 10px;
+    list-style: none;
+    padding: 5px;
+}
+
+.icecream-list li {
+
+    background: rgb(243, 158, 186);
+    padding: 12px;
+    border-radius: 2px;
+    padding: 5px;
+}
+.form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 50%;
+      
+    }
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    }
+
+button:hover {
+    background-color: #ff93d6;
+    }  

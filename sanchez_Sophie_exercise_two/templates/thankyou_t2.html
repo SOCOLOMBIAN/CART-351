@@ -1,0 +1,18 @@
+<!-- will be a child of base-->
+{% extends "base.html" %}
+ 
+{% block content %}
+
+<div class= "container mt-5 ">
+
+        <h3> Thank you for adding your important information!</h3>
+
+        <div class="border rounded p-4 mt-4" style="background-color: #f8f9fa;">
+        <p> Your Modified Message:</p>
+        <p style= "font-size: 24px; font-weight: bold; color: #006680; ">
+            {{result}}
+        </p>
+
+        </div>
+</section>
+{% endblock %}
