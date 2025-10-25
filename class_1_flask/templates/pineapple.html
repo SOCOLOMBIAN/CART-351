@@ -1,0 +1,30 @@
+ the
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pineapples again in flask</title>
+</head>
+
+<body>
+    <h1>pineapples again in flask</h1>
+    <h2> the list is {{a_new_list}} </h2>
+    {%if userLoggeIn ==True%}
+    <p> user Logged In </p>
+    {%else%}
+    <p> user not logged in</p>
+    {% endif %}
+
+
+
+    {%for index in range(5) %}
+    {% if index == 3%}
+    <p> AT 3! </p>
+    {% endif %}
+    <p style= 'color:{{color_list[index]}}' >  {{color_list[index]}} </p>
+    {%endfor%}
+
+    <img src = "../static/images/pineapple_2.jpg">
+</body>
+</html>
