@@ -1,8 +1,6 @@
 {% extends "base.html"%}
 <!-- js for this page-->
-{% block scriptblock %}
-{% comment %} <script src="{{url_for('static',filename='js/registe.js')}}"> {% endcomment %}
-{%endblock%}
+
 {%block content%}
     <section class= "register-collect">
     <div class="formContainer">
@@ -10,11 +8,24 @@
 
 <h3>  Welcome to the Magical Page, Enter the information</h3>
 <fieldset>
+
 <p>
     <label> Name:</label>
-    <input type="text" size="20" maaxlength= "40" name= "name">
+    <input type="text" size="20" maxlength= "40" name= "name">
+</p>
 
+<p>
+    <label> Select Birth Month:</label>
+    <input type= "text" size="20" name="selectMonth">
+</p>
 
+<p>
+    <label> Ask a question:</label>
+    <textarea rows="5" cols="20" name="user_question" placeholder="Enter your question here..."></textarea>
+</p>
 
+</fielset>
+</form>
+</div>
 </section>
-{%endblock%}
+{% endblock %}

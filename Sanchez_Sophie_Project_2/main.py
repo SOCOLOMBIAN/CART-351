@@ -7,5 +7,9 @@ def index():
     return render_template("index.html", 
                            user={"username":"sophie"}
     )
+    
+@app.route("/register")
+def register():
+    return render_template("register.html")
 
 app.run(debug=True)
