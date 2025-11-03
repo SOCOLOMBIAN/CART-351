@@ -1,0 +1,9 @@
+giraffe
+dog
+cat
+elephant
+dog
+nutria
+dog
+cat
+lion
