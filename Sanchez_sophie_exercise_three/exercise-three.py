@@ -10,17 +10,17 @@ app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB limit
 def index():
       return render_template("index.html")
 
-#*************************************************
-#Task: CAPTURE & POST & FETCH & SAVE
-# @app.route("/t2")
-# def t2():
-#     return render_template("t2.html")
 
-# app.route("/postDataFetch",methods = ['POST'])
-# def postDataFetch():
-#     app.logger.info(request.form)
-#     return ({"data_received":"yes"})
+# Task: CAPTURE & POST & FETCH & SAVE
+@app.route("/t2")
+def t2():
+    return render_template("t2.html")
 
-#*************************************************
-#run
+app.route("/postDataFetch",methods = ['POST'])
+def postDataFetch():
+    app.logger.info(request.form)
+    return ({"data_received":"yes"})
+
+
+# run
 app.run(debug=True)
