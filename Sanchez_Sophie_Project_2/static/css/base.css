@@ -1,31 +1,52 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
 body {
     background: black;
     font-family: monospace;
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.3);
+    z-index: 100;
+}
+
+nav a {
+    color: blueviolet;
+    text-decoration: none;
+    margin-right: 2rem;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #9d4edd;
 }
 
 /*** Register form **/
 h3 {
     font-size: 20px;
     color: blueviolet;
-    margin: 0 0 2rem 0; 
+    margin: 0 0 2rem 0;
     padding: 0.7em 0;
     text-align: center;
-    border-radius: 7px 7px 0 0;
 }
 
 .formContainer {
     max-width: 500px;
-    width: 100%;
+    width: 90%;
     background: linear-gradient(
         135deg,
         rgba(88, 28, 135, 0.4) 0%,
@@ -39,7 +60,7 @@ h3 {
         0 0 100px rgba(168, 85, 247, 0.1),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     padding: 2.5rem 2rem;
-    margin: 2rem auto;
+    margin: 0 auto;
     position: relative;
     z-index: 1;
 }
@@ -51,18 +72,19 @@ fieldset {
 
 #insertForm p {
     margin-bottom: 1.5rem;
-    text-align: left; 
+    text-align: left;
 }
 
 #insertForm label {
     display: block;
     color: blueviolet;
-    margin-bottom: 0.5rem; 
+    margin-bottom: 0.5rem;
     font-size: 14px;
 }
 
+
 #insertForm input[type="text"],
-#insertForm input[type="month"],
+#insertForm select,
 #insertForm textarea {
     width: 100%;
     padding: 0.75rem;
@@ -72,9 +94,11 @@ fieldset {
     font-family: monospace;
     font-size: 14px;
     transition: all 0.3s ease;
+    color: #333;
 }
 
 #insertForm input:focus,
+#insertForm select:focus,
 #insertForm textarea:focus {
     outline: none;
     border-color: blueviolet;
@@ -84,6 +108,14 @@ fieldset {
 #insertForm textarea {
     resize: vertical;
     min-height: 100px;
+}
+
+
+#insertForm select {
+    cursor: pointer;
+    appearance: none;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
 }
 
 .submit-btn {
@@ -111,11 +143,12 @@ fieldset {
     transform: translateY(0);
 }
 
-/* Make the section take full viewport */
+/* Center the form section */
 .register-collect {
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
+    padding: 6rem 1rem 2rem 1rem; 
 }
+
