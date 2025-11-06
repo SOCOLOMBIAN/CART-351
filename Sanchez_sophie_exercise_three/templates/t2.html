@@ -3,13 +3,54 @@
  
 {% block content %}
 
-<h1> Star feelings  </h1>
-<p>  feelings based on star choose </p>
+
+<div class="emotions">
+    <h1> circle feelings representation </h1>
+    <p>  click on the circle that represent your emotion</p>
+    <div class="user-info">
+        <input type="text" id="userName" placeholder="enter your name" />
+    </div>
+</div>
 
 
+<!-- the circles for the emotions-->
+
+<div class= "circle-container">
+
+<div class="circle red" data-emotion= "anxiety" data-color="#ff6b6b"></div>
+    <span class="label">Anxiety</span>
+
+<div class="circle blue" data-emotion= "sadness" data-color="#4facfe"></div>
+    <span class="label">sadness</span>
+
+<div class="circle green" data-emotion= "calm" data-color="#43e97b"></div>
+    <span class="label">calm</span>
+
+<div class="circle yellow" data-emotion= "joy" data-color="#ffd93d"></div>
+    <span class="label">joy</span>
+
+</div>
+
+<div class="intensity-section" id="intensitySection" style="display: none;">
+    <h3> how is this feeling?</h3>
+    <input type="range" id="intensitySlide" min="1" max="10" value="5" />
+            <div class="intensity-value">
+            <span id="intensityValue">5</span>/10
+        </div>
+    <button id="submitBtn" class="submit-btn"> Save my emotion</button>
+</div>
+
+<div class="overlay" id="overlay"></div>
+
+<div class="success-modal" id="successModal">
+    <div class="yes"></div>
+    <div class="success-content">
+        <h2 id="successTitle">Emotion Saved!</h2>
+        <p id="successMessage"></p>
+        <button class="close-btn" onclick="closeSuccessModal()">Close</button>
+    </div>
+</div>
 
 
-
-
-
+<script src="{{ url_for('static', filename='js/emotions.js') }}" defer></script>
 {% endblock %}
