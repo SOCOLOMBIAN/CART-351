@@ -10,7 +10,6 @@ window.onload = function() {
     // When you click a circle
     for (var i = 0; i < circles.length; i++) {
         circles[i].onclick = function() {
-            
         
             for (var j = 0; j < circles.length; j++) {
                 circles[j].classList.remove('selected');
