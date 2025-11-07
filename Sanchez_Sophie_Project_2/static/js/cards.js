@@ -19,7 +19,6 @@ const tarotCards=[
 ];
 document.addEventListener('DOMContentLoaded',function() {
     const cardContainer = document.getElementById('cardContainer');
-    const userName = document.getElementById('userName');
 
 //get the user data from the session storage 
     const userData = JSON.parse(sessionStorage.getItem('currentUser') || '{}');
