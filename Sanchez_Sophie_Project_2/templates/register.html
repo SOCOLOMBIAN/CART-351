@@ -2,13 +2,14 @@
 <!-- js for this page-->
 
 {%block content%}
-    <section class= "register-collect">
-    <div class="formContainer">
+<section class= "register-collect">
+<div class="formContainer">
 <form id= "insertForm" action="">
 
 <h3>  Welcome to the Magical Page, Enter the information</h3>
 <fieldset>
 
+<form id="userForm">
 <p>
     <label> Name:</label>
     <input type="text" size="20" maxlength= "40" name= "name">
@@ -38,7 +39,11 @@
     <textarea rows="5" cols="20" name="user_question" placeholder="Enter your question here..."></textarea>
 </p>
 
-<button id="submitBtn" class="submit-btn" style:> Save my information</button>
+<button id="submitBtn" class="submit-btn" style:> Save my information, get your card</button>
+
+</form>
+    <div id="message" class="hidden"></div>
+</div>
 
 </fieldset>
 </form>
