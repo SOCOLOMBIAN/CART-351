@@ -16,22 +16,11 @@ const month= document.getElementById('month').value;
 const question= document.getElementById('question').value.trim();
 
         // Validation
-if (!name) {
-    showMessage('Please enter your name! ✨', 'error');
-    return;
-        }
-        
-if (!month) {
-    showMessage('Please select your birth month! 🌙', 'error');
-        return;
-        }
-        
- if (!question) {
-    showMessage('Please ask a question! 🔮', 'error');
-    return;
-        }
+if (!name) return showMessage('Please enter your name! ✨', 'error');
+if (!month) return showMessage('Please select your birth month! 🌙', 'error');
+if (!question) return showMessage('Please ask a question! 🔮', 'error');
 
-    const userData= {
+const userData= {
         name:name,
         month:month,
         question:question
@@ -39,8 +28,9 @@ if (!month) {
 
     console.log('user data saving', userData);
 
-
     showMessage('Information saved! Preparing your cards... 🌟', 'success');
+    //pass userData to card 
+    displayCard(userData);
 
 });
 
