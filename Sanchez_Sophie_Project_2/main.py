@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request, jsonify
+from flask import Flask,render_template,request, jsonify,session,redirect,url_for
 import json 
 import os
 
@@ -18,17 +18,23 @@ def register():
             "month": request.form.get("month"),
             "question": request.form.get("user_question")
         }
-    return redirect(url_for("card"))
-return render_template("register.html")
+        return redirect(url_for("card"))
+    return render_template("register.html") 
 
+@app.route("/card")
+def card():
+    user = session.get("user")
+    if not user:
+        return redirect(url_for("register"))
+    return render_template("card.html", user=user)
 
 
 @app.route("/reading")
 def reading():
-    return render_template("reading.html")
+    user = session.get("user")
+    if not user:
+        return redirect(url_for("register"))
+    return render_template("reading.html", user=user)
 
-@app.route("/card")
-def card():
-    return render_template("card.html")
 
 app.run(debug=True)
