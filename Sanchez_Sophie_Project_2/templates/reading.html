@@ -1,0 +1,29 @@
+{% extends "base.html"%}
+<!-- js for this page-->
+
+{%block content%}
+
+<section class="reading-section">
+    <div class="reading-container">
+        <h2 id= "readingTitle"> Your Reading</h2>
+
+        <div class="reading-card-name" id="cardName"> The card</div>
+
+        <div class="reading-info">
+            <p><strong>Name</strong> <span id="userName"></span></p>
+            <p><strong>Month</strong> <span id="userMonth"></span></p>
+            <p><strong>Your question:</strong> <span id="userQuestion"></span></p>
+        </div>
+
+        <div class="reading-message" id="cardMessage">
+            Message here...
+        </div>
+
+        <div class="reading-action">
+            <button class="btn" onclick="newReading()"> New Reading</button>
+            <a href="/" class="btn btn secondary"> Home</a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

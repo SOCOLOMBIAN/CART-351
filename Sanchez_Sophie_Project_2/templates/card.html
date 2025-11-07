@@ -1,7 +1,16 @@
 {% extends "base.html"%}
-<!-- js for this page-->
 
-{%block content%}
+{% block scriptblock %}
+<script src="../static/js/cards.js" defer></script>
+{% endblock %}
 
-
+{% block content %}
+<section class="card-section">
+    <div class="card-intro">
+        <h2>Choose Your Card, <span id="userName">person</span></h2>
+        <p>Trust, your intuition will guide you to the card that holds your answer.</p>
+    </div>
+    
+    <div id="cardContainer"></div>
+</section>
 {% endblock %}

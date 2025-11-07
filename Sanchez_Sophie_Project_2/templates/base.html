@@ -6,20 +6,15 @@
     {% block scriptblock %}
     {% endblock %}
 
-    <title>Project 2 </title>
+    <title> Tarot Reading </title>
 </head>
     <body>
-        <header> 
-            <h2> Magical Game of information </h2>
-            <nav>
-                <ul>
-                    <li> <a href="/index"> </a> Home </li>
-                    <li> <a href="/register"> information </a> </li>
-                    <li> <a href="/card"> card </a> </li>
-            
-                </ul>
-                </nav>
-        </header>
+         <nav>
+            <a href= "/index">  Home </a>
+            <a href= "/register"> Register</a> 
+            <a href= "/reading"> start Reading </a> 
+            <a href= "/card">  choose Card </a> 
+        </nav>
         <main>
         {% block content %}{% endblock %}
         </main>
@@ -29,10 +24,3 @@
     </body>
 </html>
 
-
-
-
-
-
-
-</html>

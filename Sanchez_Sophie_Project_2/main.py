@@ -12,6 +12,10 @@ def index():
 def register():
     return render_template("register.html")
 
+@app.route("/reading")
+def reading():
+    return render_template("reading.html")
+
 @app.route("/card")
 def card():
     return render_template("card.html")
