@@ -1,10 +1,28 @@
 <!-- will be a child of base-->
 {% extends "base.html" %}
 
-{% block content %}
-    <!-- <h1>Hi, {{ user.username }}!</h1> -->
-     <h1>Hi, {{user.username|capitalize}}</h1>
+{% block scriptblock %}
+<script src="../static/js/index.js" defer></script>
+{% endblock %}
 
+{% block content %}
+<section class="home-section">
+    <div class="home-header">
+        <h1>🔮 Mystical Tarot Readings</h1>
+        <p>Seek guidance from the cards. Discover wisdom in the mystical.</p>
+        
+        <div class="home-cta">
+        <a href="/register" class="btn">Start Your Reading</a>
+        </div>
     </div>
-    </section>
+    
+    <div class="readings-section-home">
+        <h2>Collective Wisdom</h2>
+        <p class="readings-count"><span id="readingsCount">0</span> seekers have found their answers</p>
+        
+        <div class="readings-grid" id="readingsContainer">
+        <p style="color: rgba(212, 191, 255, 0.7); text-align: center; grid-column: 1/-1;">Loading readings...</p>
+        </div>
+    </div>
+</section>
 {% endblock %}

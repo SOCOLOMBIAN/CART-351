@@ -14,6 +14,11 @@ try{
         readingsCount.textContent = data.readings.length;
 
         readingsContainer.innerHTML= '';
+   
+        
+
+
+
     }
 
 }
