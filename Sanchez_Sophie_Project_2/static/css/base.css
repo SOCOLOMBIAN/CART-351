@@ -419,3 +419,47 @@ fieldset {
     margin: 0.5rem 0;
     font-size: 0.9rem;
 }
+
+
+.card-back {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, rgba(60, 20, 100, 0.8), rgba(25, 10, 60, 0.9));
+    backdrop-filter: blur(20px);
+    border-radius: 1rem;
+    border: 2px solid rgba(168, 85, 247, 0.5);
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.6),
+        0 0 80px rgba(168, 85, 247, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 3rem;
+    color: #b784f8;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 1rem;
+}
+
+/*  Card number styling */
+.card-number {
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.8);
+}
+
+/*Card hint text */
+.card-hint {
+    font-size: 0.8rem;
+    color: rgba(212, 191, 255, 0.6);
+    margin-top: 0.5rem;
+}
+
+.tarot-card:hover .card-back {
+    box-shadow: 
+        0 30px 60px -12px rgba(0, 0, 0, 0.8),
+        0 0 120px rgba(168, 85, 247, 0.5);
+    border-color: #b784f8;
+    transform: scale(1.02);
+}

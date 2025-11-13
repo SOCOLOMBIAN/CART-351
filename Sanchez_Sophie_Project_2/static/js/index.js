@@ -20,15 +20,14 @@ try{
             const readingCard = document.createElement('div');
             readingCard.className='reading-card';
 
-            card.innerHTML = `
+            readingCard.innerHTML = `
                 <h3>${reading.name || 'Anonymous'}</h3>
-                <p><strong>Birth Month:</strong> ${reading.birthMonth || 'Unknown'}</p>
+                <p><strong>Birth Month:</strong> ${reading.month || 'Unknown'}</p>
                 <p><strong>Question:</strong> ${reading.question || 'No question'}</p>
-                ${reading.selectedCard ? `<p><strong>Card Drawn:</strong> ${reading.selectedCard}</p>` : ''}
-                <p style="font-size: 0.8rem; color: rgba(212, 191, 255, 0.5); margin-top: 1rem;">${formattedDate}</p>
+                ${reading.cardName ? `<p><strong>Card Drawn:</strong> ${reading.cardName}</p>` : ''}
                 `;
 
-        readingsContainer.appendChild(readingCard);
+                readingsContainer.appendChild(readingCard);
 
         });
     } else {

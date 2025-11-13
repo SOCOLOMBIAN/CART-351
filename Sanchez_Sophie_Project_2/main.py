@@ -19,7 +19,7 @@ def register():
     if request.method == "POST":
         session["user"] = {
             "name": request.form.get("name"),
-            "month": request.form.get("month"),
+            "month": request.form.get("selectMonth"),
             "question": request.form.get("user_question")
         }
         app.logger.info(f"User registered: {session['user']['name']}")
@@ -52,7 +52,6 @@ def save_card_data():
     # Get card data from query parameters
     card_name = request.args.get("cardName")
     card_message = request.args.get("cardMessage")
-    timestamp = request.args.get("timestamp")
     
     app.logger.info(f"Saving card: {card_name} for user: {user['name']}")
     
@@ -62,7 +61,6 @@ def save_card_data():
         "question": user.get("question"),
         "selectedCard": card_name,
         "cardMessage": card_message,
-        "timestamp": timestamp
     }
     
     if os.path.exists(DATA_FILE):
