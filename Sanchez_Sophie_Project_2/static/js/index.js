@@ -20,12 +20,13 @@ try{
             const readingCard = document.createElement('div');
             readingCard.className='reading-card';
 
-            readingCard.innerHTML= `
-            <h3> ${reading.name} </h3>
-            <div class= "card-name"> ${reading.cardName} </div>
-            <p class="question"><strong>Question:</strong> ${reading.question}</p>
-            <p class="question"><strong>Birth Month:</strong> ${reading.month}</p>
-        `;
+            card.innerHTML = `
+                <h3>${reading.name || 'Anonymous'}</h3>
+                <p><strong>Birth Month:</strong> ${reading.birthMonth || 'Unknown'}</p>
+                <p><strong>Question:</strong> ${reading.question || 'No question'}</p>
+                ${reading.selectedCard ? `<p><strong>Card Drawn:</strong> ${reading.selectedCard}</p>` : ''}
+                <p style="font-size: 0.8rem; color: rgba(212, 191, 255, 0.5); margin-top: 1rem;">${formattedDate}</p>
+                `;
 
         readingsContainer.appendChild(readingCard);
 
