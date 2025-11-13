@@ -14,7 +14,7 @@ const tarotCards = [
 document.addEventListener('DOMContentLoaded', async function() {
     console.log('Page loaded — creating your card...');
 
-    //function get a random card
+//function get a random card
 const randomIndex=Math.floor(Math.random() * tarotCards.length);
 const selectedCard= tarotCards[randomIndex];
 
@@ -28,24 +28,25 @@ const params = {
 const queryParams = new URLSearchParams(params).toString();
 const url = `/saveCardData?${queryParams}`;
 
-try{
-    let res= await fetch(url);
-    let resJSON= await res.json()
-    console.log('server response:', resJSON);
+console.log('Sending request to:', url);
+
+fetch(url)
+    .then(res => res.json())
+    .then(resJSON => {
+        console.log('Server response:', resJSON);
 
         if (resJSON.success) {
-            // Redirect to reading page with random card
+            console.log('Success! Redirecting to reading page...');
+                // Redirect to reading page with card index
             window.location.href = '/reading?card=' + randomIndex;
-        } else {
-            alert('Error saving reading. Please try again.');
-        }
-    } catch (err) {
-        console.error('Error:', err);
-        alert('Error saving reading. Please try again.');
-    }
-});
-
-
-
-
-
+            } else {
+                console.error('Server returned error:', resJSON.message);
+                alert('Error saving reading: ' + resJSON.message);
+            }
+        })
+        .catch(err => {
+            console.error('Fetch error:', err);
+            alert('Error connecting to server. Please try again.');
+        });
+}
+)

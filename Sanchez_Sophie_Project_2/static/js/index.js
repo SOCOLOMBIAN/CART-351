@@ -2,7 +2,7 @@ console.log('index.js loaded');
 
 document.addEventListener('DOMContentLoaded',async function() {
     const readingsContainer = document.getElementById('readingsContainer');
-    const readingsCount= this.documentElementById('readingsCount');
+    const readingsCount= document.getElementById('readingsCount');
 
 try{
     const response = await fetch ('/getReadings');
