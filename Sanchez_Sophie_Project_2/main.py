@@ -13,7 +13,7 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
-        session["user"] = {
+        session["user"] = { # save session 
             "name": request.form.get("name"),
             "month": request.form.get("month"),
             "question": request.form.get("user_question")
@@ -28,6 +28,23 @@ def card():
         return redirect(url_for("register"))
     return render_template("card.html", user=user)
 
+@app.route("/saveCardData")
+def saveCardData():
+    try:
+        card_name = request.args.get('cardName')
+        card_message= request.args.get('cardMessage')
+        user= session.get("user")
+        
+        if not user:
+            return jsonify({"success": False, "message":"No data found"})
+        
+        #the reading object variables
+        reding= {
+            "name": user.get("name"),
+            "month": user.get("month"),
+            "question": user.get("question"),
+            
+        }
 
 @app.route("/reading")
 def reading():
