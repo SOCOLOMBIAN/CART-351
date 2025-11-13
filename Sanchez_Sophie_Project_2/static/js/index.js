@@ -2,7 +2,7 @@ console.log('index.js loaded');
 
 document.addEventListener('DOMContentLoaded',async function() {
     const readingsContainer = document.getElementById('readingsContainer');
-    const readingsCount= this.documentElement('readingsCount');
+    const readingsCount= this.documentElementById('readingsCount');
 
 try{
     const response = await fetch ('/getReadings');
@@ -31,7 +31,7 @@ try{
 
         });
     } else {
-        readings.textContent= '0';
+        readingsCount.textContent= '0';
         readingsContainer.innerHTML= readingsContainer.innerHTML = '<p style="color: rgba(212, 191, 255, 0.7); text-align: center; grid-column: 1/-1;">No readings. Be the first!</p>';
     }
 } catch (error) {

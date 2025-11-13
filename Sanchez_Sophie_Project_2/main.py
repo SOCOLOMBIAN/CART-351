@@ -50,12 +50,12 @@ def saveCardData():
         }
         
         readings= []
-    if os.path.exists(DATA_FILE):
-        with open (DATA_FILE, 'r') as f:
-            try:
-                readings= json.load(f)
-            except:
-                readings = []
+        if os.path.exists(DATA_FILE):
+            with open (DATA_FILE, 'r') as f:
+                try:
+                    readings= json.load(f)
+                except:
+                    readings = []
                 
         readings.append(reading)
         
