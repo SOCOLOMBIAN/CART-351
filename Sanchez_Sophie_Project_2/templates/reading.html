@@ -10,9 +10,9 @@
         <div class="reading-card-name" id="cardName"> The card</div>
 
         <div class="reading-info">
-            <p><strong>Name</strong> <span id="userName"></span></p>
-            <p><strong>Month</strong> <span id="userMonth"></span></p>
-            <p><strong>Your question:</strong> <span id="userQuestion"></span></p>
+            <p><strong>Name:</strong> {{ user.name }}</p>
+            <p><strong>Month:</strong> {{ user.month }}</p>
+            <p><strong>Your question:</strong> {{ user.question }}</p>
         </div>
 
         <div class="reading-message" id="cardMessage">
@@ -21,7 +21,7 @@
 
         <div class="reading-action">
             <button class="btn" onclick="newReading()"> New Reading</button>
-            <a href="/" class="btn btn secondary"> Home</a>
+            <a href="/" class="btn btn-secondary"> Home</a>
         </div>
     </div>
 </section>

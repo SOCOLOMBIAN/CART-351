@@ -3,18 +3,18 @@
 
 <section class="register-collect">
   <div class="formContainer">
-    <form id="userForm">
+    <form id="userForm" method="POST" action="/register">
       <h3>Welcome to the Magical Page, Enter the information</h3>
       
       <fieldset>
         <p>
           <label for="name">Name:</label>
-          <input type="text" id="name" name="name" maxlength="40">
+          <input type="text" id="name" name="name" maxlength="40" required>
         </p>
 
         <p>
           <label for="month">Select Birth Month:</label>
-          <select id="month" name="selectMonth">
+          <select id="month" name="selectMonth" required>
             <option value="">-- Choose Month --</option>
             <option value="january">January</option>
             <option value="february">February</option>
@@ -33,10 +33,10 @@
 
         <p>
           <label> Ask a question:</label>
-          <textarea id="question" name="user_question" rows="5" cols="20" placeholder="Enter your question here..."></textarea>
+          <textarea id="question" name="user_question" rows="5" cols="20" placeholder="Enter your question here..." required></textarea>
         </p>
 
-        <button id="submitBtn" class="submit-btn">Save my information, get your card</button>
+        <button type="submit" id="submitBtn" class="submit-btn">Save my information, get your card</button>
       </fieldset>
     </form>
   </div>

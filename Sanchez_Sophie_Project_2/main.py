@@ -15,7 +15,7 @@ def register():
     if request.method == "POST":
         session["user"] = { # save session 
             "name": request.form.get("name"),
-            "month": request.form.get("month"),
+            "month": request.form.get("selectMonth"),
             "question": request.form.get("user_question")
         }
         return redirect(url_for("card"))
@@ -41,21 +41,21 @@ def saveCardData():
             return jsonify({"success": False, "message":"No data found"})
         
         #the reading object variables
-        reding= {
+        reading= {
             "name": user.get("name"),
             "month": user.get("month"),
             "question": user.get("question"),
-            "cardname": card_name,
+            "cardName": card_name,
             "cardMessage": card_message
         }
         
         readings= []
-        if os.path.exist(DATA_FILE):
-            with open (DATA_FILE, 'r') as f:
-                try:
-                    readings= json.load(f)
-                except:
-                    readings = []
+    if os.path.exists(DATA_FILE):
+        with open (DATA_FILE, 'r') as f:
+            try:
+                readings= json.load(f)
+            except:
+                readings = []
                 
         readings.append(reading)
         
