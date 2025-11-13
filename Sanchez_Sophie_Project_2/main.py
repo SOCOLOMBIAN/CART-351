@@ -28,6 +28,8 @@ def card():
         return redirect(url_for("register"))
     return render_template("card.html", user=user)
 
+
+# data that will be stored from the js of the card 
 @app.route("/saveCardData")
 def saveCardData():
     try:
@@ -43,15 +45,50 @@ def saveCardData():
             "name": user.get("name"),
             "month": user.get("month"),
             "question": user.get("question"),
-            
+            "cardname": card_name,
+            "cardMessage": card_message
         }
-
+        
+        readings= []
+        if os.path.exist(DATA_FILE):
+            with open (DATA_FILE, 'r') as f:
+                try:
+                    readings= json.load(f)
+                except:
+                    readings = []
+                
+        readings.append(reading)
+        
+        with open(DATA_FILE, 'w') as f:
+            json.dump(readings, f, indent=2)
+            
+        return jsonify({"success": True, "message": "Reading saved"})
+        
+    except Exception as e:
+        print(f"Error saving: {e}")
+        return jsonify({"success": False, "message": str(e)})
+            
+       
 @app.route("/reading")
 def reading():
     user = session.get("user")
     if not user:
         return redirect(url_for("register"))
     return render_template("reading.html", user=user)
+
+@app.route("/getReadings")
+def get_readings():
+    try:
+        if os.path.exists(DATA_FILE):
+            with open(DATA_FILE, 'r') as f:
+                readings = json.load(f)
+            return jsonify({"success": True, "readings": readings})
+        else:
+            return jsonify({"success": True, "readings": []})
+    except Exception as e:
+        print(f"Error reading data: {e}")
+    return jsonify({"success": False, "message": str(e)})
+
 
 
 app.run(debug=True)
