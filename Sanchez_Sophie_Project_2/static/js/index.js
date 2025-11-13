@@ -24,7 +24,7 @@ try{
                 <h3>${reading.name || 'Anonymous'}</h3>
                 <p><strong>Birth Month:</strong> ${reading.month || 'Unknown'}</p>
                 <p><strong>Question:</strong> ${reading.question || 'No question'}</p>
-                ${reading.cardName ? `<p><strong>Card Drawn:</strong> ${reading.cardName}</p>` : ''}
+                ${reading.selectedCard ? `<p><strong>Card Drawn:</strong> ${reading.selectedCard}</p>` : ''}
                 `;
 
                 readingsContainer.appendChild(readingCard);

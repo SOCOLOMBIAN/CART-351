@@ -12,5 +12,19 @@
         "question": ",",
         "selectedCard": "Moving River",
         "cardMessage": "Go with the flow. The universe is guiding you on a journey of transformation."
+    },
+    {
+        "name": "patricia",
+        "birthMonth": "july",
+        "question": "helo?",
+        "selectedCard": "Special Sun",
+        "cardMessage": "Clarity and success await you. The warmth of the sun reveals the truth you need to see."
+    },
+    {
+        "name": "sophie sanchez",
+        "birthMonth": "february",
+        "question": "hello",
+        "selectedCard": "Mystic Moon",
+        "cardMessage": "Trust your intuition. The answers you search are within you, illuminated by the moon's gentle light."
     }
 ]
