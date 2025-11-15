@@ -26,5 +26,26 @@
         "question": "hello",
         "selectedCard": "Mystic Moon",
         "cardMessage": "Trust your intuition. The answers you search are within you, illuminated by the moon's gentle light."
+    },
+    {
+        "name": "raul",
+        "birthMonth": "may",
+        "question": "when is the day i will finish school?",
+        "selectedCard": "Continuous Flame",
+        "cardMessage": "Something special will rise. Embrace change with courage."
+    },
+    {
+        "name": "raul",
+        "birthMonth": "may",
+        "question": "when is the day i will finish school?",
+        "selectedCard": "Cosmic Star",
+        "cardMessage": "Hope and renewal. Believe in the possibilities."
+    },
+    {
+        "name": "raul",
+        "birthMonth": "may",
+        "question": "when is the day i will finish school?",
+        "selectedCard": "Cosmic Star",
+        "cardMessage": "Hope and renewal. Believe in the possibilities."
     }
 ]
