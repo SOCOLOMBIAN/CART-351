@@ -47,5 +47,47 @@
         "question": "when is the day i will finish school?",
         "selectedCard": "Cosmic Star",
         "cardMessage": "Hope and renewal. Believe in the possibilities."
+    },
+    {
+        "name": "rocio ",
+        "birthMonth": "february",
+        "question": "eee",
+        "selectedCard": "Moving River",
+        "cardMessage": "Go with the flow. The universe is guiding you on a journey of transformation."
+    },
+    {
+        "name": "rocio ",
+        "birthMonth": "february",
+        "question": "eee",
+        "selectedCard": "Cosmic Star",
+        "cardMessage": "Hope and renewal. Believe in the possibilities."
+    },
+    {
+        "name": "rocio ",
+        "birthMonth": "february",
+        "question": "eee",
+        "selectedCard": "Cosmic Star",
+        "cardMessage": "Hope and renewal. Believe in the possibilities."
+    },
+    {
+        "name": "gabriela",
+        "birthMonth": "may",
+        "question": "lol",
+        "selectedCard": "Continuous Flame",
+        "cardMessage": "Something special will rise. Embrace change with courage."
+    },
+    {
+        "name": "julio",
+        "birthMonth": "september",
+        "question": "what is my name?",
+        "selectedCard": "Moving River",
+        "cardMessage": "Go with the flow. The universe is guiding you on a journey of transformation."
+    },
+    {
+        "name": "astrid",
+        "birthMonth": "december",
+        "question": "hello",
+        "selectedCard": "Special Sun",
+        "cardMessage": "Clarity and success await you. The warmth of the sun reveals the truth you need to see."
     }
 ]

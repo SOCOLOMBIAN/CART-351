@@ -38,8 +38,14 @@ def reading():
     user = session.get("user")
     if not user:
         return redirect(url_for("register"))
-    return render_template("reading.html", user=user)
-
+    
+    card_name = request.args.get("cardName", "")
+    card_message = request.args.get("cardMessage", "")
+    
+    return render_template("reading.html", 
+                           user=user,
+                           card_name= card_name,
+                           card_message=card_message)
 
 @app.route('/saveCardData')
 def save_card_data():
@@ -55,16 +61,22 @@ def save_card_data():
     
     app.logger.info(f"Saving card: {card_name} for user: {user['name']}")
     
+    session["selected_card"] = {
+        "name": card_name,
+        "message": card_message
+    }
+    
+    
     complete_reading = {
         "name": user.get("name"),
         "birthMonth": user.get("month"),
-        "question": user.get("question"),
+        "question": user.get("question") if not user.get("hide_question") else "[private]",
         "selectedCard": card_name,
         "cardMessage": card_message,
     }
     
     if os.path.exists(DATA_FILE):
-        app.logger.info("File exists - reading data")
+        app.logger.info("File exists, reading data")
         # File exists 
         jsonFile = open(DATA_FILE, "r")
         theList = json.load(jsonFile)
@@ -79,7 +91,7 @@ def save_card_data():
         jsonFile_write.close()
         
     else:
-        app.logger.info("File does not exist - creating new file")
+        app.logger.info("File does not exist, creating new file")
         # File doesn't exist create
         jsonFile = open(DATA_FILE, "w")
         list_m = [complete_reading]
@@ -88,7 +100,7 @@ def save_card_data():
     
     return jsonify({"success": True, "message": "Reading saved"})
 
-# GET request to retrieve all readings
+# get request to get all readings
 @app.route('/getReadings')
 def get_readings():
     if os.path.exists(DATA_FILE):

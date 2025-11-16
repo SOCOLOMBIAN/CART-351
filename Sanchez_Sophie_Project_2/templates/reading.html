@@ -7,7 +7,7 @@
     <div class="reading-container">
         <h2 id= "readingTitle"> Your Reading</h2>
 
-        <div class="reading-card-name" id="cardName"> The card</div>
+        <div class="reading-card-name" id="cardName"> {{card_name}}</div>
 
         <div class="reading-info">
             <p><strong>Name:</strong> {{ user.name }}</p>
@@ -16,11 +16,10 @@
         </div>
 
         <div class="reading-message" id="cardMessage">
-            Message here...
+           {{card_message}}
         </div>
 
         <div class="reading-actions">
-            <button class="btn" onclick="newReading()"> New Reading</button>
             <a href="/" class="btn btn-secondary"> Home</a>
         </div>
     </div>
