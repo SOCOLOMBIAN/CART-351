@@ -89,5 +89,47 @@
         "question": "hello",
         "selectedCard": "Special Sun",
         "cardMessage": "Clarity and success await you. The warmth of the sun reveals the truth you need to see."
+    },
+    {
+        "name": "laura",
+        "birthMonth": "december",
+        "question": "hello",
+        "selectedCard": "Special Sun",
+        "cardMessage": "Clarity and success await you. The warmth of the sun reveals the truth you need to see."
+    },
+    {
+        "name": "hernan",
+        "birthMonth": "october",
+        "question": "hello?",
+        "selectedCard": "Moving River",
+        "cardMessage": "Go with the flow. The universe is guiding you on a journey of transformation."
+    },
+    {
+        "name": "kiki",
+        "birthMonth": "april",
+        "question": "[private]",
+        "selectedCard": "Cosmic Star",
+        "cardMessage": "Hope and renewal. Believe in the possibilities."
+    },
+    {
+        "name": "jose",
+        "birthMonth": "january",
+        "question": "private",
+        "selectedCard": "Moving River",
+        "cardMessage": "Go with the flow. The universe is guiding you on a journey of transformation."
+    },
+    {
+        "name": "sophie sanchez",
+        "birthMonth": "january",
+        "question": "private",
+        "selectedCard": "Moving River",
+        "cardMessage": "Go with the flow. The universe is guiding you on a journey of transformation."
+    },
+    {
+        "name": "rocio ",
+        "birthMonth": "march",
+        "question": "private",
+        "selectedCard": "Ancient Tree",
+        "cardMessage": "Growth comes from patience and nurturing."
     }
 ]

@@ -17,10 +17,12 @@ def index():
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+        hide_question = request.form.get("hide_question") == "true"
         session["user"] = {
             "name": request.form.get("name"),
             "month": request.form.get("selectMonth"),
-            "question": request.form.get("user_question")
+            "question": request.form.get("user_question"),
+            "hide_question": hide_question
         }
         app.logger.info(f"User registered: {session['user']['name']}")
         return redirect(url_for("card"))
@@ -65,12 +67,17 @@ def save_card_data():
         "name": card_name,
         "message": card_message
     }
+
+    if user.get("hide_question"):
+        question_to_save = "private"
+    else:
+         question_to_save = user.get("question")
     
     
     complete_reading = {
         "name": user.get("name"),
         "birthMonth": user.get("month"),
-        "question": user.get("question") if not user.get("hide_question") else "[private]",
+        "question": question_to_save,
         "selectedCard": card_name,
         "cardMessage": card_message,
     }

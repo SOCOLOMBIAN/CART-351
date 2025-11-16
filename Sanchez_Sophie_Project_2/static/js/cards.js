@@ -59,8 +59,9 @@ async function selectCard(cardIndex) {
         let resJSON = await res.json();
         console.log('response', resJSON);
 
+        // this part was debugged with the help of tools since the text of the card was not showing properly 
         if (resJSON.success) { 
-            window.location.href = '/reading?card=' + cardIndex;
+            window.location.href = `/reading?cardName=${encodeURIComponent(selectCard.name)}&cardMessage=${encodeURIComponent(selectCard.message)}`;
         } else { 
             console.error('error saving reading, try again');
         }
