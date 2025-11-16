@@ -131,5 +131,40 @@
         "question": "private",
         "selectedCard": "Ancient Tree",
         "cardMessage": "Growth comes from patience and nurturing."
+    },
+    {
+        "name": "wendy",
+        "birthMonth": "july",
+        "question": "private",
+        "selectedCard": "Moving River",
+        "cardMessage": "Go with the flow. The universe is guiding you on a journey of transformation."
+    },
+    {
+        "name": "gabriela",
+        "birthMonth": "april",
+        "question": "private",
+        "selectedCard": "Cosmic Star",
+        "cardMessage": "Hope and renewal. Believe in the possibilities."
+    },
+    {
+        "name": "gabriela",
+        "birthMonth": "april",
+        "question": "private",
+        "selectedCard": "Mystic Moon",
+        "cardMessage": "Trust your intuition. The answers you search are within you, illuminated by the moon's gentle light."
+    },
+    {
+        "name": "luisa",
+        "birthMonth": "july",
+        "question": "private",
+        "selectedCard": "Mystic Moon",
+        "cardMessage": "Trust your intuition. The answers you search are within you, illuminated by the moon's gentle light."
+    },
+    {
+        "name": "jose",
+        "birthMonth": "april",
+        "question": "private",
+        "selectedCard": "Cosmic Star",
+        "cardMessage": "Hope and renewal. Believe in the possibilities."
     }
 ]

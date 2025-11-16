@@ -22,7 +22,7 @@ try{
 
             readingCard.innerHTML = `
                 <h3>${reading.name || 'Anonymous'}</h3>
-                <p><strong>Birth Month:</strong> ${reading.birhtMonth || 'Unknown'}</p>
+                <p><strong>Birth Month:</strong> ${reading.birthMonth || 'Unknown'}</p>
                 <p><strong>Question:</strong> ${reading.question || 'No question'}</p>
                 ${reading.selectedCard ? `<p><strong>Card Drawn:</strong> ${reading.selectedCard}</p>` : ''}
                 `;

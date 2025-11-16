@@ -4,12 +4,12 @@ console.log('cards.js loaded');
 
 // tarot card data
 const tarotCards = [
-    { name: "Mystic Moon", message: "Trust your intuition. The answers you search are within you, illuminated by the moon's gentle light.", color: "#9d4edd" },
-    { name: "Cosmic Star", message: "Hope and renewal. Believe in the possibilities.", color: "#7209b7" },
-    { name: "Special Sun", message: "Clarity and success await you. The warmth of the sun reveals the truth you need to see.", color: "#f72585" },
-    { name: "Ancient Tree", message: "Growth comes from patience and nurturing.", color: "#4cc9f0" },
-    { name: "Moving River", message: "Go with the flow. The universe is guiding you on a journey of transformation.", color: "#4361ee" },
-    { name: "Continuous Flame", message: "Something special will rise. Embrace change with courage.", color: "#f94144" }
+    { name: "Mystic Moon", message: "Trust your intuition. The answers you search are within you, illuminated by the moon's gentle light.", symbol: "☽"},
+    { name: "Cosmic Star", message: "Hope and renewal. Believe in the possibilities.", symbol: "✦" },
+    { name: "Special Sun", message: "Clarity and success await you. The warmth of the sun reveals the truth you need to see.", symbol: "☀" },
+    { name: "Ancient Tree", message: "Growth comes from patience and nurturing.", symbol: "♣" },
+    { name: "Moving River", message: "Go with the flow. The universe is guiding you on a journey of transformation.", symbol: "≋" },
+    { name: "Continuous Flame", message: "Something special will rise. Embrace change with courage.", symbol: "♨" }
 ];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -23,9 +23,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
         cardElement.innerHTML = `
             <div class="card-inner">
-                <div class="card-back" style="border-color: ${card.color};">
+                    <div class="card-number">${card.symbol}</div>
+                    <div class="card-back" style="border-color: ${card.color};">
                     <div class="card-number" style="color: ${card.color};">${index + 1}</div>
-                    <div class="card-hint">Click to reveal</div>
+                    <div class="card-hint">select</div>
                 </div>
             </div>
         `;

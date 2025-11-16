@@ -168,25 +168,31 @@ fieldset {
 
 .card-intro {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
 }
 
 .card-intro h2 {
-    color: #b784f8;
+    color: #d4bfff;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    font-weight: normal;
+}
+
+.card-intro h2 span {
+    color: #b784f8;
 }
 
 .card-intro p {
     color: rgba(212, 191, 255, 0.8);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    font-style: italic;
 }
 
 #cardContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 2rem;
-    max-width: 1000px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    max-width: 900px;
     width: 100%;
     padding: 2rem;
 }
@@ -194,12 +200,11 @@ fieldset {
 .tarot-card {
     aspect-ratio: 2/3;
     cursor: pointer;
-    perspective: 1000px;
     transition: transform 0.3s ease;
 }
 
 .tarot-card:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: translateY(-10px);
 }
 
 .card-inner {
@@ -211,27 +216,122 @@ fieldset {
 .card-back {
     width: 100%;
     height: 100%;
-    background: linear-gradient(145deg, rgba(60, 20, 100, 0.8), rgba(25, 10, 60, 0.9));
-    backdrop-filter: blur(20px);
-    border-radius: 1rem;
-    border: 2px solid rgba(168, 85, 247, 0.5);
+    background: linear-gradient(to bottom, rgba(30, 20, 50, 0.9), rgba(15, 10, 30, 0.95));
+    border-radius: 0.8rem;
+    border: 1px solid rgba(180, 140, 200, 0.2);
     box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.6),
-        0 0 80px rgba(168, 85, 247, 0.3);
+        0 4px 20px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 4rem;
-    color: #b784f8;
-    font-weight: bold;
+    flex-direction: column;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
     transition: all 0.3s ease;
 }
 
+
+.card-image {
+    width: 80%;
+    height: 60%;
+    object-fit: contain;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+
+.card-back::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    border: 1px solid rgba(180, 140, 200, 0.15);
+    border-radius: 0.5rem;
+    pointer-events: none;
+}
+
+
+.card-number {
+    font-size: 6rem;
+    color: rgba(180, 140, 200, 0.9);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+
+.card-hint {
+    font-size: 0.7rem;
+    color: rgba(180, 140, 200, 0.6);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
 .tarot-card:hover .card-back {
+    border-color: rgba(180, 140, 200, 0.4);
     box-shadow: 
-        0 30px 60px -12px rgba(0, 0, 0, 0.8),
-        0 0 120px rgba(168, 85, 247, 0.5);
-    border-color: #b784f8;
+        0 8px 30px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.tarot-card:hover .card-number {
+    color: rgba(180, 140, 200, 1);
+}
+
+.tarot-card:hover .card-hint {
+    color: rgba(180, 140, 200, 0.8);
+    letter-spacing: 2px;
+}
+
+.tarot-card:hover .card-image {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+
+.card-decoration {
+    position: absolute;
+    top: 20px;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    color: rgba(180, 140, 200, 0.6);
+}
+
+
+@media (max-width: 768px) {
+    #cardContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 500px;
+    }
+    
+    .card-number {
+        font-size: 3.5rem;
+    }
+    
+    .card-intro h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #cardContainer {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    
+    .card-number {
+        font-size: 3rem;
+    }
 }
 
 /*** Reading Page ***/
