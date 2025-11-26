@@ -134,7 +134,7 @@ check if there has been something posted to the server to be processed
 '''
 @app.route("/three")
 def three():
-    results = mongo.db.dataStuff.find({
+    results= mongo.db.dataStuff.find({
         'after_mood': {'$in': positive_moods}
     })
     return({"results": results,"moods": moods})
@@ -142,21 +142,25 @@ def three():
 
 @app.route("/four")
 def four():
-   results = mongo.db.dataStuff.find().sort("event_name",1)
+   results= mongo.db.dataStuff.find().sort("event_name",1)
    return({"results": results, "events": event_names })
 
 
 @app.route("/five")
 def five():
-    results = mongo.db.dataStuff.find({
-        "days": {'$in': ['Monday', 'Tuesday']}}
+    results= mongo.db.dataStuff.find({
+        "day": {'$in': ['Monday', 'Tuesday']}}
     ).sort("event_affect_strength", 1 ) 
       
     return({"results": results, "days": days })
 
 @app.route("/six")
 def six():
-     return({"results":"not yet done"})
+    results= mongo.db.dataStuff.find({
+        "start_mood": {"$in": negative_moods},
+        "after_mood": {"$in": negative_moods},
+    }).sort("weather", 1)
+    
+    return({"results": results, "weather": weather })
 
 app.run(debug = True)
-

@@ -360,4 +360,18 @@ window.onload = function () {
   } //function
 
   /***********************************************/
+
+  funciton displayThree(resultOBj) {
+
+    dataPoints = [];
+
+  }
+    
+
+
+
+
+
+
+
 };
