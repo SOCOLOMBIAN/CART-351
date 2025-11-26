@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import random
 
+
 #helper arrays
 days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 weather = ['stormy','raining','sunny','cloudy','clear', 'snowing', 'grey', 'fog']
@@ -20,20 +21,25 @@ event_names = ['walking in a forest','swimming in the ocean','dining with siblin
 positive_moods = ['happy','neutral','calm','serene','well']
 negative_moods = ['sad','angry','neutral','calm', 'anxious','moody','hurt']
 
-
+#the variables from .env and .flaskenv
 load_dotenv()  # Load variables from .env and .flaskenv
 db_user = os.getenv('MONGODB_USER')
 db_pass = os.getenv('DATABASE_PASSWORD')
 db_name = os.getenv('DATABASE_NAME')
 
-app = Flask(__name__)
+app= Flask(__name__)
 
-uri = f"mongodb+srv://{db_user}:{db_pass}@cluster0.n0do9xq.mongodb.net/{db_name}?retryWrites=true&w=majority"
- # Replace with your MongoDB Atlas connection string
+app.secret_key = 'BAD_SECRET_KEY'
+UPLOAD_FOLDER = 'static/uploads'
+app.config ['UPLOAD_FOLDER']= UPLOAD_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 
+
+# uri 
+uri = f"mongodb+srv://{db_user}:{db_pass}@cluster0.8uqe4zh.mongodb.net/{db_name}?retryWrites=true&w=majority"
 app.config["MONGO_URI"] = uri
 mongo = PyMongo(app)
-print (mongo.db)
-print("Pinged your deployment. You successfully connected to MongoDB!")
+format_string = "%Y-%m-%d"
+
 
 @app.route("/")
 def index():

@@ -13,7 +13,7 @@ db_name = os.getenv('DATABASE_NAME')
 app = Flask(__name__)
 # set a config var
 app.secret_key = 'BAD_SECRET_KEY'
-UPLOAD_FOLDER = 'static/uploads' 
+UPLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 # 16 MB limit
 # uri = f"mongodb+srv://{db_user}: {db_pass} @cluster0.8uqe4zh.mongodb.net/?appName=Cluster0"
