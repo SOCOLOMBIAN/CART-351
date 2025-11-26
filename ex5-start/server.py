@@ -134,16 +134,25 @@ check if there has been something posted to the server to be processed
 '''
 @app.route("/three")
 def three():
- return({"results":"not yet done"})
+    results = mongo.db.dataStuff.find({
+        'after_mood': {'$in': positive_moods}
+    })
+    return({"results": results,"moods": moods})
 
 
 @app.route("/four")
 def four():
- return({"results":"not yet done"})
+   results = mongo.db.dataStuff.find().sort("event_name",1)
+   return({"results": results, "events": event_names })
+
 
 @app.route("/five")
 def five():
-    return({"results":"not yet done"})
+    results = mongo.db.dataStuff.find({
+        "days": {'$in': ['Monday', 'Tuesday']}}
+    ).sort("event_affect_strength", 1 ) 
+      
+    return({"results": results, "days": days })
 
 @app.route("/six")
 def six():
