@@ -66,23 +66,22 @@ window.onload = function () {
          ** bonus: if your visualizations(s) are interactive or animate.
          ****/
         case "three": {
-          console.log("three")
-          // TODO
+          displayAsSolarSystem(resJSON);
           break;
         }
         case "four": {
-          console.log("four")
+          displayAsPlanetaryAlignment(resJSON)
           // TODO
           break;
         }
 
         case "five": {
-          console.log("five")
+          displayAsBinaryStarSystem(resJSON)
           // TODO
           break;
         }
         case "six": {
-          console.log("six")
+          displayAsDarkNebula(resJSON)
           // TODO
           break;
         }
@@ -343,7 +342,7 @@ window.onload = function () {
         )
       );
 
-      /** this code is rather brittle - but does the job for now .. draw a grid of data points ..
+/** this code is rather brittle - but does the job for now .. draw a grid of data points ..
 //*** drawing a grid ****/
       if (i % NUM_COLS === 0) {
         //reset x and inc y (go to next row)
@@ -361,17 +360,278 @@ window.onload = function () {
 
   /***********************************************/
 
-  funciton displayThree(resultOBj) {
-
+//visualization for number three
+function displayAsSolarSystem(resultObj) {
     dataPoints = [];
+    let resultSet = resultObj.results;
 
-  }
+    document.querySelector("#parent-wrapper").style.background = "rgba(39, 39, 107, 1)";
+    description.textContent = "SOLAR SYSTEM: POSITIVE MOODS ";
+    description.style.color = "#FFD700";
+
+    const moodColors = {
+      'happy': 'rgba(255, 215, 0, 0.9)',   
+      'calm': 'rgba(65, 105, 225, 0.9)',     
+      'serene': 'rgba(230, 230, 250, 0.9)',   
+      'neutral': 'rgba(192, 192, 192, 0.9)',  
+      'well': 'rgba(50, 205, 50, 0.9)'       
+    };
+
+    const centerX = window.innerWidth / 2;
+    const centerY= 400;
+    const planetsPerOrbit = 6;
+
+    for (let i = 0; i < resultSet.length; i++) {
+      const color = moodColors[resultSet[i].after_mood] || 'rgba(128, 128, 128, 0.9)';
     
+        dataPoints.push(
+            new myDataPoint(
+                resultSet[i].dataId,
+                resultSet[i].day,
+                resultSet[i].weather,
+                resultSet[i].start_mood,
+                resultSet[i].after_mood,
+                resultSet[i].after_mood_strength,
+                resultSet[i].event_affect_strength,
+                resultSet[i].event_name,
+                color,
+                document.querySelector("#childOne"),
+                "point_two"
+            )
+        );
 
 
+      // Calculate the  orbit position
+        const orbitNum = Math.floor(i / planetsPerOrbit);
+        const posInOrbit = i % planetsPerOrbit;
+        const angle = (posInOrbit / planetsPerOrbit) * Math.PI * 2;
+        const orbitRadius = 100 + (orbitNum * 80);
+        
+        const x = centerX + Math.cos(angle) * orbitRadius;
+        const y = centerY + Math.sin(angle) * orbitRadius;
+        
+        dataPoints[i].update(x, y);
+    }
+    
+    const maxOrbit = Math.ceil(resultSet.length / planetsPerOrbit);
+    const totalHeight = centerY + (maxOrbit * 80) + 150;
+    document.querySelector("#childOne").style.height = `${totalHeight}px`;
+}
 
 
+// visualization for number 4 
+function displayAsPlanetaryAlignment(resultObj) {
+    dataPoints = [];
+    let resultSet = resultObj.results;
+    
+    document.querySelector("#parent-wrapper").style.background = "rgba(10, 10, 40, 1)";
+    description.textContent = "PLANETARY ALIGNMENT ";
+    description.style.color = "#f7f7f7ff";
+    
+    // Different planet types with colors
+    const planetColors = [
+        'rgba(255, 99, 71, 0.85)',     
+        'rgba(65, 105, 225, 0.85)',    
+        'rgba(255, 215, 0, 0.85)',     
+        'rgba(50, 205, 50, 0.85)',     
+        'rgba(255, 105, 180, 0.85)',   
+        'rgba(139, 69, 19, 0.85)',     
+        'rgba(135, 206, 235, 0.85)',   
+        'rgba(147, 112, 219, 0.85)'    
+    ];
+    
+    const spacing = Math.max(30, (window.innerWidth - 100) / resultSet.length);
+    const alignmentY = 350;
+    
+    for (let i = 0; i < resultSet.length; i++) {
+        const color = planetColors[i % planetColors.length];
+        
+        dataPoints.push(
+            new myDataPoint(
+                resultSet[i].dataId,
+                resultSet[i].day,
+                resultSet[i].weather,
+                resultSet[i].start_mood,
+                resultSet[i].after_mood,
+                resultSet[i].after_mood_strength,
+                resultSet[i].event_affect_strength,
+                resultSet[i].event_name,
+                color,
+                document.querySelector("#childOne"),
+                "point_two"
+            )
+        );
+        
+        // Position planets 
+        const x = 50 + (i * spacing);
+        const double = Math.sin(i * 0.5) * 30;
+        const y = alignmentY + double;
+        
+        dataPoints[i].update(x, y);
+    }
+    
+    document.querySelector("#childOne").style.height = "600px";
+}
 
+// visualization for number 5
+
+function displayAsBinaryStarSystem(resultObj) {
+    dataPoints = [];
+    let resultSet = resultObj.results;
+    
+    document.querySelector("#parent-wrapper").style.background = "rgba(0, 0, 30, 1)";
+    description.textContent = "BINARY STARS:  MONDAY BLUE VS TUESDAY ORANGE";
+    description.style.color = "#FFA500";
+    
+    const mondayData = resultSet.filter(e => e.day === 'Monday');
+    const tuesdayData = resultSet.filter(e => e.day === 'Tuesday');
+    
+    // Weather planet colors
+    const weatherColors = {
+        'stormy': 'rgba(75, 0, 130, 0.85)',
+        'raining': 'rgba(30, 144, 255, 0.85)',
+        'sunny': 'rgba(255, 215, 0, 0.85)',
+        'cloudy': 'rgba(176, 196, 222, 0.85)',
+        'clear': 'rgba(135, 206, 235, 0.85)',
+        'snowing': 'rgba(240, 255, 255, 0.85)',
+        'grey': 'rgba(105, 105, 105, 0.85)',
+        'fog': 'rgba(220, 220, 220, 0.85)'
+    };
+    
+    // Monday star system (left - blue star)
+    const star1X = window.innerWidth * 0.3;
+    const star1Y = 400;
+    
+    mondayData.forEach((entry, i) => {
+        const color = weatherColors[entry.weather] || 'rgba(65, 105, 225, 0.85)';
+        
+        dataPoints.push(
+            new myDataPoint(
+                entry.dataId,
+                entry.day,
+                entry.weather,
+                entry.start_mood,
+                entry.after_mood,
+                entry.after_mood_strength,
+                entry.event_affect_strength,
+                entry.event_name,
+                color,
+                document.querySelector("#childOne"),
+                "point_two"
+            )
+        );
+        
+        // Planets orbit 
+        const angle = (i / mondayData.length) * Math.PI * 2;
+        const orbitRadius = 100 + (i % 3) * 60;
+        const x = star1X + Math.cos(angle) * orbitRadius;
+        const y = star1Y + Math.sin(angle) * orbitRadius;
+        
+        dataPoints[dataPoints.length - 1].update(x, y);
+    });
+    
+    // Tuesday star system (right - orange star)
+    const star2X = window.innerWidth * 0.7;
+    const star2Y = 400;
+    
+    tuesdayData.forEach((entry, i) => {
+        const color = weatherColors[entry.weather] || 'rgba(255, 140, 0, 0.85)';
+        
+        dataPoints.push(
+            new myDataPoint(
+                entry.dataId,
+                entry.day,
+                entry.weather,
+                entry.start_mood,
+                entry.after_mood,
+                entry.after_mood_strength,
+                entry.event_affect_strength,
+                entry.event_name,
+                color,
+                document.querySelector("#childOne"),
+                "point_two"
+            )
+        );
+        
+        // Planets orbit the orange star
+        const angle = (i / tuesdayData.length) * Math.PI * 2;
+        const orbitRadius = 100 + (i % 3) * 60;
+        const x = star2X + Math.cos(angle) * orbitRadius;
+        const y = star2Y + Math.sin(angle) * orbitRadius;
+        
+        dataPoints[dataPoints.length - 1].update(x, y);
+    });
+    
+    document.querySelector("#childOne").style.height = "800px";
+}
+
+//vizualition for number 6 
+
+function displayAsDarkNebula(resultObj) {
+    dataPoints = [];
+    let resultSet = resultObj.results;
+    
+    document.querySelector("#parent-wrapper").style.background = "rgba(0, 0, 0, 1)";
+    description.textContent = "DARK NEBULA: NEGATIVE MOOD PLANETS ";
+    description.style.color = "#696969";
+    
+    // Dark planet colors
+    const darkPlanetColors = [
+        'rgba(47, 79, 79, 0.9)',      // Dark slate
+        'rgba(72, 61, 139, 0.9)',     // Dark slate blue
+        'rgba(139, 69, 19, 0.9)',     // Saddle brown
+        'rgba(105, 105, 105, 0.9)',   // Dim gray
+        'rgba(85, 107, 47, 0.9)',     // Dark olive
+        'rgba(75, 0, 130, 0.9)',      // Indigo
+        'rgba(128, 0, 0, 0.9)',       // Maroon
+        'rgba(47, 47, 47, 0.9)'       // Very dark gray
+    ];
+    
+    // Create random d positions like asteroids
+    for (let i = 0; i < resultSet.length; i++) {
+        const color = darkPlanetColors[i % darkPlanetColors.length];
+        
+        dataPoints.push(
+            new myDataPoint(
+                resultSet[i].dataId,
+                resultSet[i].day,
+                resultSet[i].weather,
+                resultSet[i].start_mood,
+                resultSet[i].after_mood,
+                resultSet[i].after_mood_strength,
+                resultSet[i].event_affect_strength,
+                resultSet[i].event_name,
+                color,
+                document.querySelector("#childOne"),
+                "point_two"
+            )
+        );
+        
+
+      //note: The AI helped me understand how to create a grid structure with randomization effect I was trying for negative mood data.
+
+       //grid but randomize within cells
+        const cols = 8;
+        const cellWidth = window.innerWidth / cols;
+        const cellHeight = 80;
+        
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        
+        const baseX = col * cellWidth + cellWidth / 2;
+        const baseY = row * cellHeight + 100;
+        
+        // randomness 
+        const x = baseX + (Math.random() - 0.5) * cellWidth * 0.8;
+        const y = baseY + (Math.random() - 0.5) * cellHeight * 0.6;
+        
+        dataPoints[i].update(x, y);
+    }
+    
+    const rows = Math.ceil(resultSet.length / 5);
+    const finalHeight = rows * 80 + 150;
+    document.querySelector("#childOne").style.height = `${finalHeight}px`;
+}
 
 
 };
