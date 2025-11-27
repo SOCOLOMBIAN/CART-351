@@ -480,90 +480,102 @@ function displayAsBinaryStarSystem(resultObj) {
     let resultSet = resultObj.results;
     
     document.querySelector("#parent-wrapper").style.background = "rgba(0, 0, 30, 1)";
-    description.textContent = "BINARY STARS:  MONDAY BLUE VS TUESDAY ORANGE";
+    description.textContent = "BINARY STARS - MONDAY (BLUE) VS TUESDAY (ORANGE)";
     description.style.color = "#FFA500";
     
     const mondayData = resultSet.filter(e => e.day === 'Monday');
     const tuesdayData = resultSet.filter(e => e.day === 'Tuesday');
+
+
+// Monday star system (left: BLUE tinted planets)
+const star1X = window.innerWidth * 0.3;
+const star1Y = 400;
+
+// Blue color palette for Monday
+const mondayColors = {
+    'stormy': 'rgba(75, 0, 130, 0.85)',    
+    'raining': 'rgba(30, 144, 255, 0.85)',  
+    'sunny': 'rgba(135, 206, 250, 0.85)',    
+    'cloudy': 'rgba(176, 196, 222, 0.85)',   
+    'clear': 'rgba(135, 206, 235, 0.85)',   
+    'snowing': 'rgba(240, 248, 255, 0.85)',  
+    'grey': 'rgba(119, 136, 153, 0.85)',     
+    'fog': 'rgba(176, 224, 230, 0.85)'       
+};
+
+mondayData.forEach((entry, i) => {
+    const color = mondayColors[entry.weather] || 'rgba(65, 105, 225, 0.85)'; 
     
-    // Weather planet colors
-    const weatherColors = {
-        'stormy': 'rgba(75, 0, 130, 0.85)',
-        'raining': 'rgba(30, 144, 255, 0.85)',
-        'sunny': 'rgba(255, 215, 0, 0.85)',
-        'cloudy': 'rgba(176, 196, 222, 0.85)',
-        'clear': 'rgba(135, 206, 235, 0.85)',
-        'snowing': 'rgba(240, 255, 255, 0.85)',
-        'grey': 'rgba(105, 105, 105, 0.85)',
-        'fog': 'rgba(220, 220, 220, 0.85)'
-    };
+    dataPoints.push(
+        new myDataPoint(
+            entry.dataId,
+            entry.day,
+            entry.weather,
+            entry.start_mood,
+            entry.after_mood,
+            entry.after_mood_strength,
+            entry.event_affect_strength,
+            entry.event_name,
+            color,
+            document.querySelector("#childOne"),
+            "point_two"
+        )
+    );
     
-    // Monday star system (left - blue star)
-    const star1X = window.innerWidth * 0.3;
-    const star1Y = 400;
+    const angle = (i / mondayData.length) * Math.PI * 2;
+    const orbitRadius = 100 + (i % 3) * 60;
+    const x = star1X + Math.cos(angle) * orbitRadius;
+    const y = star1Y + Math.sin(angle) * orbitRadius;
     
-    mondayData.forEach((entry, i) => {
-        const color = weatherColors[entry.weather] || 'rgba(65, 105, 225, 0.85)';
-        
-        dataPoints.push(
-            new myDataPoint(
-                entry.dataId,
-                entry.day,
-                entry.weather,
-                entry.start_mood,
-                entry.after_mood,
-                entry.after_mood_strength,
-                entry.event_affect_strength,
-                entry.event_name,
-                color,
-                document.querySelector("#childOne"),
-                "point_two"
-            )
-        );
-        
-        // Planets orbit 
-        const angle = (i / mondayData.length) * Math.PI * 2;
-        const orbitRadius = 100 + (i % 3) * 60;
-        const x = star1X + Math.cos(angle) * orbitRadius;
-        const y = star1Y + Math.sin(angle) * orbitRadius;
-        
-        dataPoints[dataPoints.length - 1].update(x, y);
-    });
+    dataPoints[dataPoints.length - 1].update(x, y);
+});
+
+// Tuesday star system (right:ORANGE tinted planets)
+const star2X = window.innerWidth * 0.7;
+const star2Y = 400;
+
+// Orange color palette for Tuesday
+const tuesdayColors = {
+    'stormy': 'rgba(184, 134, 11, 0.85)',    
+    'raining': 'rgba(255, 165, 0, 0.85)',   
+    'sunny': 'rgba(255, 215, 0, 0.85)',     
+    'cloudy': 'rgba(255, 218, 185, 0.85)',   
+    'clear': 'rgba(255, 200, 124, 0.85)',   
+    'snowing': 'rgba(255, 239, 213, 0.85)', 
+    'grey': 'rgba(205, 133, 63, 0.85)',     
+    'fog': 'rgba(255, 228, 196, 0.85)'      
+};
+
+tuesdayData.forEach((entry, i) => {
+    const color = tuesdayColors[entry.weather] || 'rgba(255, 140, 0, 0.85)'; 
     
-    // Tuesday star system (right - orange star)
-    const star2X = window.innerWidth * 0.7;
-    const star2Y = 400;
+    dataPoints.push(
+        new myDataPoint(
+            entry.dataId,
+            entry.day,
+            entry.weather,
+            entry.start_mood,
+            entry.after_mood,
+            entry.after_mood_strength,
+            entry.event_affect_strength,
+            entry.event_name,
+            color,
+            document.querySelector("#childOne"),
+            "point_two"
+        )
+    );
     
-    tuesdayData.forEach((entry, i) => {
-        const color = weatherColors[entry.weather] || 'rgba(255, 140, 0, 0.85)';
-        
-        dataPoints.push(
-            new myDataPoint(
-                entry.dataId,
-                entry.day,
-                entry.weather,
-                entry.start_mood,
-                entry.after_mood,
-                entry.after_mood_strength,
-                entry.event_affect_strength,
-                entry.event_name,
-                color,
-                document.querySelector("#childOne"),
-                "point_two"
-            )
-        );
-        
-        // Planets orbit the orange star
-        const angle = (i / tuesdayData.length) * Math.PI * 2;
-        const orbitRadius = 100 + (i % 3) * 60;
-        const x = star2X + Math.cos(angle) * orbitRadius;
-        const y = star2Y + Math.sin(angle) * orbitRadius;
-        
-        dataPoints[dataPoints.length - 1].update(x, y);
-    });
+    const angle = (i / tuesdayData.length) * Math.PI * 2;
+    const orbitRadius = 100 + (i % 3) * 60;
+    const x = star2X + Math.cos(angle) * orbitRadius;
+    const y = star2Y + Math.sin(angle) * orbitRadius;
     
-    document.querySelector("#childOne").style.height = "800px";
+    dataPoints[dataPoints.length - 1].update(x, y);
+    
+});
 }
+
+document.querySelector("#childOne").style.height = "800px";
 
 //vizualition for number 6 
 
