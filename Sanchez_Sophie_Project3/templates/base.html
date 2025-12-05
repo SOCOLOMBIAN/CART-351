@@ -1,19 +1,16 @@
-<!doctype html>
-<html>
-<head>
-    <link rel="stylesheet" href="../static/css/base.css">
+{% extends "base.html"%}
 
-    {% block scriptblock %}
-    {% endblock %}
+{% block scriptblock %}
+<script src="../static/js/typing.js" defer></script>
+{% endblock %}
 
-    <title> Emotion Habits </title>
-</head>
-    <body>
-        <main>
-        {% block content %}{% endblock %}
-        </main>
-        <footer>
-            Sophie Sanchez Project 3
-        </footer>
-    </body>
-</html>
+
+{% block content %}
+
+<div class="text"></div>
+
+<footer>
+    Sophie Sanchez Project 3
+</footer>
+
+{% endblock %}

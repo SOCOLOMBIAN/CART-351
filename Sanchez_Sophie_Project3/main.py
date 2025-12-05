@@ -33,10 +33,6 @@ def base():
     return render_template("base.html")
 
 
-@app.route("/information")
-def information():
-    return render_template("information.html")
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+app.route("/create")
+def create():
+    return render_template("create")
