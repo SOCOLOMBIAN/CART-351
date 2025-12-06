@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block scriptblock %}
+<script src="{{ url_for('static', filename='js/typing.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="information-container">
+    <div class="text"></div> 
+    
+    <div class="space-prompt" id="spacePrompt" style="opacity: 0; margin-top: 2rem; text-align: center;">
+        <p>Press <kbd>SPACE</kbd> to continue</p>
+    </div>
+</div>
+{% endblock %}

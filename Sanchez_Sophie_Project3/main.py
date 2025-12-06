@@ -31,8 +31,7 @@ format_string = "%Y-%m-%d"
     
 @app.route("/")
 def base():
-    return render_template("base.html")
-
+    return render_template("information.html")
 
 @app.route("/create", methods=['GET', 'POST'])
 def create():
