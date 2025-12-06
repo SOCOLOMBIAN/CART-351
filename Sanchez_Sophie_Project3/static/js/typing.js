@@ -20,6 +20,11 @@ console.log('typing.js loaded');
 
     setTimeout(() => TextTypingEffect(element,text, i + 1), 50);  
 
+     document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space') {
+            window.location.href = "{{ url_for('create') }}";
+        }
+    });
+
 }
 
-TextTypingEffect(div, text);

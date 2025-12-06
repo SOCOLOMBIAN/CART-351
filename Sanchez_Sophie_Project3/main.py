@@ -1,6 +1,7 @@
-from flask import Flask,render_template,request,redirect, url_for,session
+from flask import Flask,render_template,request,redirect, url_for,session,jsonify
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
+from datetime import datetime
 import os
 
 load_dotenv()
@@ -33,6 +34,26 @@ def base():
     return render_template("base.html")
 
 
-app.route("/create")
+@app.route("/create", methods=['GET', 'POST'])
 def create():
-    return render_template("create")
+    return render_template("create.html")
+
+@app.route("/character", methods=['POST'])
+def character():
+    data = request.get_json()
+    
+    character_data = {
+        'name': data.get('name'),
+        'degree': data.get('degree'),
+        'physical_health': 80,
+        'mental_health': 80,
+        'week': 1,
+        'created_at': datetime.now()
+    }
+    result = mongo.db.characters.insert_one(character_data)
+    # return render_template("character.html")
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
