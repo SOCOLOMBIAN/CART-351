@@ -3,40 +3,38 @@
 
 console.log('typing.js loaded');
 
+const div = document.querySelector(".text");
+const text = "Emotions Habits is a Welcome experience in which you will need to take care of your heart and brain";
 
-    const div = document.querySelector(".text")
-    const text= " Emotions Habits is a Welcome experience in wich you will need to take care of your heart and brain";
-
-    function TextTypingEffect(element,text, i = 0) {
-    if (i === 0 ) {
+function TextTypingEffect(element, text, i = 0) {
+    if (i === 0) {
         element.textContent = "";
     }
 
     element.textContent += text[i];
 
-    if (i === text.length -1 ) {
-    return;
+    if (i === text.length - 1) {
+        return;
     }
 
-    setTimeout(() => TextTypingEffect(element,text, i + 1), 50);  
+    setTimeout(() => TextTypingEffect(element, text, i + 1), 50);
+}
 
-    // i got help for this part from IA because the typing effect and tab wasn't working
-    if (div) {
-        TextTypingEffect(div,text);
 
-        setTimeout(() => {
+if (div) {
+    TextTypingEffect(div, text);
+
+    setTimeout(() => {
         const prompt = document.getElementById('spacePrompt');
         if (prompt) {
             prompt.style.opacity = '1';
+            prompt.style.transition = 'opacity 0.5s ease-in';
         }
-    }, text.length * 50 + 500);  
+    }, text.length * 50 + 500);
 }
 
-     document.addEventListener('keydown', (e) => {
-        if (e.code === 'Space') {
-            window.location.href = "/create";
-        }
-    });
-
-}
-
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') {
+        window.location.href = "/create";
+    }
+});
