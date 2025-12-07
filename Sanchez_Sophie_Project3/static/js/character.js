@@ -16,7 +16,6 @@ class Shadow {
     }
 
     update() {
-
         const dx = this.targetX - this.x;
         const dy= this.targetY - this.y;
         //
@@ -27,7 +26,7 @@ class Shadow {
             this.x += (dx / distance) * this.speed;
             this.y += (dy / distance) * this.speed;
         }
-
+        
         this.shadow += 0.08;
 
         if (distance < 5 && Math.random() < 0.02) {
@@ -96,9 +95,45 @@ function animate() {
 
 animate();
 
-// this part 
+// this part is that the shadow follows the mouse of the user
 canvas.addEventListener('mousemove', (e) => {
     const rect = canvas.getBoundingClientRect();
     shadow.targetX = e.clientX - rect.left;
     shadow.targetY = e.clientY - rect.top;
+});
+
+// getting information on the html page 
+const startButton = document.getElementById('startJourney');
+const nameInput = document.getElementById('characterName');
+const degreeInput = document.getElementById('characterDegree');
+
+
+// here we are getting into the part where we send the character info to initialize the game
+startButton.addEventListener('click', async () => {
+    const name = nameInput.value.trim();
+    const degree = degreeInput.value.trim();
+
+    if (!name || !degree) {
+        alert('fill in both fields!');
+        return;
+    }
+
+    try {
+        const response = await fetch('/character', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, degree })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            window.location.href = '/game';
+        }
+    } catch (error) {
+        console.error('Error creating character:', error);
+        alert(' Please try again.');
+    }
 });
