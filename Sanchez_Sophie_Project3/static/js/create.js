@@ -102,4 +102,3 @@ canvas.addEventListener('mousemove', (e) => {
     shadow.targetX = e.clientX - rect.left;
     shadow.targetY = e.clientY - rect.top;
 });
-
