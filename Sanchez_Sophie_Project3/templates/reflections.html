@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/reflections.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<div class="reflections-page">
+    <div class="reflections-header">
+        <h1>Collective Reflections</h1>
+        <p class="subtitle">Shared experiences from students in their semester journey</p>
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number">{{ reflections|length }}</span>
+                <span class="stat-label">Total Reflections</span>
+            </div>
+
+            <div class="stat-item">
+                <span class="stat-number">{{ ((reflections|sum(attribute='final_physical') + reflections|sum(attribute='final_mental')) / (reflections|length * 2))|round|int if reflections|length > 0 else 0 }}</span>
+                <span class="stat-label">Average Health</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="reflections-grid">
+        {% if reflections|length == 0 %}
+        <div class="empty-state">       
+            <h2>No Reflections Yet</h2>
+            <p>Be the first!</p>
+            <a href="/create" class="start-btn">Start Your Journey</a>
+        </div>
+    
+
+        {% else %}
+        {% for reflection in reflections %}
+        <div class="reflection-card status-{{ reflection.status }}">
+            <div class="card-header">
+                <div class="character-info">
+                    <h3>{{ reflection.character_name }}</h3>
+                    <p class="degree">{{ reflection.degree }}</p>
+                </div>
+        </div>
+
+        <div class="reflection-text">
+                <p>"{{ reflection.reflection }}"</p>
+        </div>
+
+        <div class="card-footer">
+            <span class="timestamp">
+                    {{ reflection.created_at.strftime('%B %d, %Y') }}
+            </span>
+            </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    <div class="navigation-section">
+        <a href="/character" class="nav-btn">← Back to Your Journey</a>
+        <a href="/gallery" class="nav-btn">View All Shadows 👥</a>
+        <a href="/" class="nav-btn">Home 🏠</a>
+    </div>
+</div>
+{% endblock %}

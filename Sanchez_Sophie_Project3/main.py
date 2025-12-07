@@ -19,15 +19,6 @@ app.config['MONGO_URI']= uri
 mongo= PyMongo(app)
 format_string = "%Y-%m-%d"
 
-# try:
-#     print(mongo.cx)
-#     print(mongo.db)
-#     print(mongo.db.dataUser)
-#     print("succes")
-#     result= mongo.db.dataUser.insert_one({"testkeymON": "TestValueMon"})
-#     print(result) 
-# except Exception as e:
-#     print(e)
     
 @app.route("/")
 def base():
@@ -51,6 +42,7 @@ def character():
     }
     result = mongo.db.characters.insert_one(character_data)
     # return render_template("character.html")
+
 
 
 
