@@ -28,6 +28,7 @@ def base():
 def create():
     return render_template("create.html")
 
+# the route to post the character on the js file of the user then on the mongo
 @app.route("/character", methods=['POST'])
 def character():
     data = request.get_json()
@@ -40,10 +41,19 @@ def character():
         'week': 1,
         'created_at': datetime.now()
     }
+    # save on mongo
     result = mongo.db.characters.insert_one(character_data)
-    # return render_template("character.html")
+    session['character_id'] = str(result.inserted_id)
+    # back to js
+    return jsonify({'good':True,'character_id': str(result.inserted_id)}) 
 
 
+#added a route for all the reflections 
+@app.route("/reflections")
+def reflections():
+    all_reflections = list(mongo.db.reflectios.find().sort('created_at', -1))
+    return render_template("reflections.html", reflections= all_reflections)
+    
 
 
 if __name__ == '__main__':
