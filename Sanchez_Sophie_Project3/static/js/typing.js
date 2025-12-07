@@ -4,7 +4,7 @@
 console.log('typing.js loaded');
 
 const div = document.querySelector(".text");
-const text = "Emotions Habits is a Welcome experience in which you will need to take care of your heart and brain";
+const text = "Emotional Habits is a Welcome experience in which you will need to take care of your heart and brain";
 
 function TextTypingEffect(element, text, i = 0) {
     if (i === 0) {
