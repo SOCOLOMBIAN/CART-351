@@ -47,6 +47,18 @@ def character():
     # back to js
     return jsonify({'good':True,'character_id': str(result.inserted_id)}) 
 
+#route to start the game for the questions
+@app.route("/game")
+def game():
+    if 'character_id' not in session:
+        return redirect(url_for('create'))
+    
+    character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
+    if not character:
+        return redirect(url_for('create'))
+    
+    return render_template("game.html", character=character)
+    
 
 
 

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block scriptblock %}
+<script src="{{ url_for('static', filename='js/game.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+
+<div class="game-container">
+    <div class="game-header">
+        <h1>{{ character.name }}'s Semester Journey</h1>
+        <p class="degree-text">{{ character.degree }}</p>
+    </div>
+
+    <div class="health-bars">
+        <div class="health-item">
+            <span class="health-label">❤️ Physical Health</span>
+            <div class="health-bar">
+                <div id="physicalBar" class="health-fill physical" style="width: {{ character.physical_health }}%"></div>
+                <span id="physicalText" class="health-value">{{ character.physical_health }}</span>
+            </div>
+        </div>
+
+    <div class="health-item">
+            <span class="health-label">🧠 Mental Health</span>
+            <div class="health-bar">
+                <div id="mentalBar" class="health-fill mental" style="width: {{ character.mental_health }}%"></div>
+                <span id="mentalText" class="health-value">{{ character.mental_health }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="week-indicator">
+        <h2 id="weekText">Week <span id="weekNum">{{ character.week }}</span></h2>
+    </div>
+
+
+    <div class="question-container">
+        <p id="questionText" class="question"></p>
+        
+        <div id="optionsContainer" class="options">
+        </div>
+    </div>
+</div>
