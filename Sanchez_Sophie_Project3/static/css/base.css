@@ -58,3 +58,146 @@ footer {
     padding:2rem;
     text-align: center;
 }
+
+.end-game-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.result-header {
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+}
+
+.result-header.status-passed {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.result-header.status-better {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+}
+
+.result-header.status-struggled {
+    background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%);
+}
+
+.result-header h1 {
+    color: rgb(0, 60, 116);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-header h2 {
+    color: rgb(0, 60, 116);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.character-name {
+    color: rgb(0, 60, 116);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.final-stats {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgb(0, 60, 116);
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-content h3 {
+    color: rgb(0, 60, 116);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(0, 60, 116);
+}
+
+.reflection-section {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    border: 2px solid rgb(0, 60, 116);
+}
+
+.reflection-section h2 {
+    color: rgb(0, 60, 116);
+    margin-bottom: 1rem;
+}
+
+.reflection-section p {
+    color: rgb(0, 60, 116);
+    margin-bottom: 1rem;
+}
+
+#reflectionText {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgb(0, 60, 116);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 1rem;
+}
+
+.submit-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: rgb(0, 60, 116);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    background: rgb(0, 80, 140);
+    transform: translateY(-2px);
+}
+
+.navigation-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: rgb(0, 60, 116);
+    border: 2px solid rgb(0, 60, 116);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background: rgb(0, 60, 116);
+    color: white;
+    transform: translateY(-2px);
+}
