@@ -13,15 +13,19 @@ function getBackgroundColor(physical,mental) {
 
 //setting the conditonals for the colors
 
-if { (avg >= 70) {
-    return 'rgb(200, 230, 255)';
-    } else if (avg >= 50) {
-        return 'rgb(255, 240, 200)'; // Warm yellow
-    } else if (avg >= 30) {
-        return 'rgb(255, 220, 200)'; // Orange
-    } else {
-        return 'rgb(220, 200, 200)'; // Muted red
+if (avg >= 70) {
+    return 'rgba(205, 233, 255, 1)';
+ } else if (avg >= 50) {
+    return 'rgba(255, 229, 159, 1)'; 
+} else if (avg >= 30) {
+    return 'rgba(255, 175, 128, 1)'; 
+} else {
+    return 'rgba(255, 151, 151, 1)'; 
     }
 }
 
+function updateBackground() {
+    document.body.style.backgroundColor = getBackgroundColor(currentPhysical,currentMental);
+    document.body.style.transition= 'background-color 1s ease'; // this part was a suggestion that i have for the transition of the background 
 }
+

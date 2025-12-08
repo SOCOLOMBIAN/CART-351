@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block scriptblock %}
+<script src="{{ url_for('static', filename='js/end.js') }}" defer></script>
+{% endblock %}
+
+{% block content %}
+<div class="end-game-container">
+    {% set avg_health = (character.physical_health + character.mental_health) / 2 %}
+    {% if avg_health >= 60 %}
+        {% set status = 'passed' %}
+        {% set message = 'You made it through the semester!' %}    
+    {% elif avg_health >= 30 %}
+        {% set status = 'better ' %}
+        {% set message = 'You pass the health semester but need some improvements' %}
+    {% else %}
+        {% set status = 'struggled' %}
+        {% set message = 'you need more time for you' %}
+    {% endif %}
+
+    <div class="result-header status-{{ status }}">
+        <h1> Semester Complete </h1>
+        <h2>{{ message }}</h2>
+        <p class="character-name">{{ character.name }} - {{ character.degree }}</p>
+    </div>
+
+    <div class="final-stats">
+        <div class="stat-card">
+        <div class="stat-icon">❤️</div>
+        <div class="stat-content">
+        <h3>Physical Health</h3>
+            <div class="stat-value">{{ character.physical_health|round|int }}</div>
+        </div>
+    </div>
+
+    <div class="stat-card">
+        <div class="stat-icon">🧠</div>
+        <div class="stat-content">
+        <h3>Mental Health</h3>
+            <div class="stat-value">{{ character.mental_health|round|int }}</div>
+        </div>
+    </div>
+
+    <div class="reflection-section">
+        <h2>Share Your Experience</h2>
+        <p>How was your semester journey, give some advice to other people?</p>
+        <textarea id="reflectionText" placeholder="Your reflection here..." rows="5"></textarea>
+        <button id="submitReflection" class="submit-btn">Share My Story</button>
+    </div>
+    
+    <div class="navigation-btns">
+        <a href="/reflections" class="nav-btn">See Community Reflections</a>
+        <a href="/" class="nav-btn">Start New Journey</a>
+    </div>
+</div>

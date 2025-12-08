@@ -53,7 +53,7 @@ def game():
     if 'character_id' not in session:
         return redirect(url_for('create'))
     
-    character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
+    character = mongo.db.characters.find_one({'_id': (session['character_id'])})
     if not character:
         return redirect(url_for('create'))
     
