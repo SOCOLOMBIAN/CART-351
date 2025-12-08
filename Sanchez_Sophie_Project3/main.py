@@ -161,7 +161,7 @@ def submit_answers():
 #added route for game ending     
 @app.route("/end")
 def end():
-    if 'character' not in session:
+    if 'character_id' not in session:
         return redirect(url_for('create'))
     
     character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
@@ -181,7 +181,14 @@ def submit_reflection():
     character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
     
     avg_health = (character['physical_health'] + character['mental_health']) / 2
-    status = 'good' if avg_health >= 70 else 'struggling' if avg_health >= 40 else 'improvement'
+    
+    # Fixed status calculation
+    if avg_health >= 60:
+        status = 'thriving'
+    elif avg_health >= 30:
+        status = 'struggling'
+    else:
+        status = 'critical'
     
     reflection_data = {
         'character_name': character['name'],
@@ -201,7 +208,17 @@ def submit_reflection():
 @app.route("/reflections")
 def reflections():
     all_reflections = list(mongo.db.reflections.find().sort('created_at', -1))
-    return render_template("reflections.html", reflections= all_reflections)
+    
+    # Calculate proper average health
+    total_reflections = len(all_reflections)
+    if total_reflections > 0:
+        total_physical = sum(r['final_physical'] for r in all_reflections)
+        total_mental = sum(r['final_mental'] for r in all_reflections)
+        avg_health = round((total_physical + total_mental) / (total_reflections * 2))
+    else:
+        avg_health = 0
+    
+    return render_template("reflections.html", reflections=all_reflections, avg_health=avg_health)
     
 
 if __name__ == '__main__':

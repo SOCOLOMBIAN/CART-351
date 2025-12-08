@@ -1,37 +1,41 @@
 // Track all answers
 let allAnswers = [];
 
-// Starting health values
-let currentPhysical = 80;
-let currentMental = 80;
+// Starting health values 
+const STARTING_PHYSICAL = 80;
+const STARTING_MENTAL = 80;
 
-// Initialize - questions are already loaded from the template
+// Current projected values
+let currentPhysical = STARTING_PHYSICAL;
+let currentMental = STARTING_MENTAL;
+
+
 const questionCards = document.querySelectorAll('.question-card');
 
-// Background color based on health
+// Background color based on health with gradient transitions
 function getBackgroundColor(physical, mental) {
     const avg = (physical + mental) / 2;
 
     if (avg >= 70) {
-        return 'rgba(205, 233, 255, 1)'; // Light blue - healthy
+        return 'linear-gradient(135deg, #d6a3ffff 0%, #cca2f8ff 100%)'; 
     } else if (avg >= 50) {
-        return 'rgba(255, 229, 159, 1)'; // Yellow - okay
+        return 'linear-gradient(135deg, #8dadffff 0%, #1111f9ff 100%)'; 
     } else if (avg >= 30) {
-        return 'rgba(255, 175, 128, 1)'; // Orange - struggling
+        return 'linear-gradient(135deg, #ff7d37ff 0%, #a54d00ff 100%)'; 
     } else {
-        return 'rgba(255, 151, 151, 1)'; // Red - critical
+        return 'linear-gradient(135deg, #ff3939ff 0%, #ff3c3cff 100%)'; 
     }
 }
 
 function updateBackground() {
-    document.body.style.backgroundColor = getBackgroundColor(currentPhysical, currentMental);
-    document.body.style.transition = 'background-color 1s ease';
+    document.body.style.background = getBackgroundColor(currentPhysical, currentMental);
+    document.body.style.transition = 'background 1.5s ease';
 }
 
 // Calculate projected health based on answers so far
 function calculateProjectedHealth() {
-    let projectedPhysical = 80; 
-    let projectedMental = 80;    // Starting value
+    let projectedPhysical = STARTING_PHYSICAL; 
+    let projectedMental = STARTING_MENTAL;
     
     // Add up all the health changes from answers
     allAnswers.forEach(answer => {
@@ -84,6 +88,12 @@ questionCards.forEach((card, questionIndex) => {
             currentMental = projected.mental;
             updateBackground();
             
+            // Add visual feedback
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 200);
+            
             // Check if all questions are answered
             checkIfComplete();
         });
@@ -101,9 +111,10 @@ function checkIfComplete() {
         // Update hint text
         const hint = document.querySelector('.submit-hint');
         if (hint) {
-            hint.textContent = 'Ready to submit! Click the button above';
-            hint.style.color = 'rgb(0, 60, 116)';
+            hint.textContent = `✓ Ready to submit! Your projected health: ❤️ ${Math.round(currentPhysical)} | 🧠 ${Math.round(currentMental)}`;
+            hint.style.color = 'white';
             hint.style.fontWeight = 'bold';
+            hint.style.fontSize = '1.1rem';
         }
     } else {
         submitBtn.disabled = true;
@@ -114,8 +125,9 @@ function checkIfComplete() {
         const hint = document.querySelector('.submit-hint');
         if (hint) {
             hint.textContent = `Answer ${remaining} more question${remaining === 1 ? '' : 's'} to continue`;
-            hint.style.color = 'rgb(0, 60, 116)';
+            hint.style.color = 'rgba(255, 255, 255, 0.9)';
             hint.style.fontWeight = 'normal';
+            hint.style.fontSize = '0.9rem';
         }
     }
 }
@@ -123,10 +135,10 @@ function checkIfComplete() {
 // Submit all answers
 document.getElementById('submitAll').addEventListener('click', async function() {
     this.disabled = true;
-    this.textContent = 'Calculating results...';
+    this.textContent = 'Calculating neural pathways...';
     
     try {
-        const response = await fetch('/submit_answers', {
+        const response = await fetch('/submit_answer', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ answers: allAnswers })

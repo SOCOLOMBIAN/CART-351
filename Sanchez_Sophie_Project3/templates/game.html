@@ -13,24 +13,26 @@
     </div>
 
     <div class="all-questions">
-        {% for question in questions %}
-        <div class="question-card" data-week="{{ question.week }}">
-            <div class="question-header">
-                <span class="week-label">Week {{ question.week }}</span>
+        {% for week_num in [1, 2, 3, 4] %}
+            {% for question in questions[week_num] %}
+            <div class="question-card" data-week="{{ week_num }}">
+                <div class="question-header">
+                    <span class="week-label">Week {{ week_num }}</span>
+                </div>
+                
+                <p class="question-text">{{ question.q }}</p>
+                
+                <div class="question-options">
+                    {% for option in question.options %}
+                    <button class="option-btn" 
+                            data-physical="{{ option.physical }}" 
+                            data-mental="{{ option.mental }}">
+                        {{ option.text }}
+                    </button>
+                    {% endfor %}
+                </div>
             </div>
-            
-            <p class="question-text">{{ question.q }}</p>
-            
-            <div class="question-options">
-                {% for option in question.options %}
-                <button class="option-btn" 
-                        data-physical="{{ option.physical }}" 
-                        data-mental="{{ option.mental }}">
-                    {{ option.text }}
-                </button>
-                {% endfor %}
-            </div>
-        </div>
+            {% endfor %}
         {% endfor %}
     </div>
 

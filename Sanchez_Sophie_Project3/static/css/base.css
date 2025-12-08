@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: rgb(215, 215, 249);
+    background-color: rgb(0, 0, 0);
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     transition: background-color 1s ease;
 }
@@ -13,7 +13,7 @@ body {
 footer {
     text-align: center;
     padding: 2rem;
-    color: rgb(0, 60, 116);
+    color: rgb(0, 80, 140);
     font-size: 20px;
 }
 
@@ -24,7 +24,7 @@ footer {
     align-items: center;
     justify-content: center;
     min-height: 80vh;
-    background-image: url('/static/images/nuero.jpg');
+    background-image: url('../images/nuero.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -37,17 +37,22 @@ footer {
     text-align: center;
     padding: 2rem;
     max-width: 800px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
 }
 
 .space-prompt{
     color: rgb(0, 60, 116);
     font-weight: bold;
     font-size: 1.2rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 2rem;
+    border-radius: 10px;
 }
 
 /* Character Creation Page */
 .creation-container {
-    max-width: 1000px;
+    max-width: 2000px;
     margin: 2rem auto;
     padding: 2rem;
     text-align: center;
@@ -105,7 +110,7 @@ footer {
 .start-btn {
     padding: 1rem 2rem;
     font-size: 1.2rem;
-    background: rgb(42, 2, 47);
+    background:rgb(0, 80, 140);
     color: white;
     text-align: center;
     border: none;
@@ -114,10 +119,11 @@ footer {
     margin-top: 1rem;
 }
 
-
-
-
-
+.start-btn:hover {
+    background: rgb(160, 214, 255);
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
 
 
 .game-container {
@@ -146,8 +152,9 @@ footer {
 
 .instructions {
     color: rgb(0, 60, 116);
-    font-size: 1rem;
+    font-size: 2rem;
     margin-top: 1rem;
+    font-weight: bold;
 }
 
 .all-questions {
@@ -194,10 +201,9 @@ footer {
 .option-btn {
     padding: 1rem;
     font-size: 1rem;
-    background: white;
-    color: rgb(0, 60, 116);
-    border: 2px solid rgb(0, 60, 116);
-    border-radius: 10px;
+    background: rgb(0, 60, 116);
+    color: rgb(254, 255, 255);
+    border-radius: 5px;
     cursor: pointer;
     text-align: left;
     transition: all 0.3s ease;
@@ -222,7 +228,7 @@ footer {
 .submit-all-btn {
     padding: 1.2rem 3rem;
     font-size: 1.3rem;
-    background: rgb(100, 100, 100);
+    background: rgb(0, 60, 116);
     color: white;
     border: none;
     border-radius: 10px;
@@ -265,15 +271,11 @@ footer {
 }
 
 .result-header.status-passed {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-}
-
-.result-header.status-better {
-    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
-}
-
-.result-header.status-struggled {
-    background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%);
+    background-image: url('../images/nuero.jpg');
+     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .result-header h1 {
