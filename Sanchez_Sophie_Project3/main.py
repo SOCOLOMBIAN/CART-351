@@ -48,10 +48,13 @@ def character():
     return jsonify({'good':True,'character_id': str(result.inserted_id)}) 
 
 
+
+
+
 #added a route for all the reflections 
 @app.route("/reflections")
 def reflections():
-    all_reflections = list(mongo.db.reflectios.find().sort('created_at', -1))
+    all_reflections = list(mongo.db.reflections.find().sort('created_at', -1))
     return render_template("reflections.html", reflections= all_reflections)
     
 
