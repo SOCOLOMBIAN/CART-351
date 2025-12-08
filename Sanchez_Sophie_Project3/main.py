@@ -2,6 +2,7 @@ from flask import Flask,render_template,request,redirect, url_for,session,jsonif
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 from datetime import datetime
+from bson.objectid import ObjectId
 import os
 
 load_dotenv()
@@ -13,7 +14,7 @@ app = Flask(__name__)
 app.secret_key= 'BAD_SECRET_KEY'
 UPDLOAD_FOLDER = 'static/uploads'
 app.config['UPLOAD_FOLDER']= UPDLOAD_FOLDER 
-app.config['MAX_CONTENT_LENGTH']= 16 * 1024 * 1014
+app.config['MAX_CONTENT_LENGTH']= 16 * 1024 * 1024
 uri = f"mongodb+srv://{db_user}:{db_pass}@cluster0.8uqe4zh.mongodb.net/{db_name}?retryWrites=true&w=majority"
 app.config['MONGO_URI']= uri 
 mongo= PyMongo(app)
@@ -87,7 +88,7 @@ def base():
 def create():
     return render_template("create.html")
 
-# the route to post the character on the js file of the user then on the mongo
+# the route to post the character data
 @app.route("/character", methods=['POST'])
 def character():
     data = request.get_json()
@@ -98,6 +99,7 @@ def character():
         'physical_health': 80,
         'mental_health': 80,
         'week': 1,
+        'question_index': 0,
         'created_at': datetime.now()
     }
     # save on mongo
@@ -106,24 +108,26 @@ def character():
     # back to js
     return jsonify({"success": True})
 
+
 #route to start the game for the questions
 @app.route("/game")
 def game():
     if 'character_id' not in session:
         return redirect(url_for('create'))
     
-    character = mongo.db.characters.find_one({'_id': (session['character_id'])})
+    character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])}) 
     if not character:
         return redirect(url_for('create'))
-        
+      
     return render_template("game.html", character=character)
 
-# route for the questions on the week 
+# route for the current question
 @app.route("/get_question")
 def get_question():
     if 'character_id'not in session:
         return jsonify({'error': 'no character'})
-    character = mongo.db.characters.find_one({'_id': (session['character_id'])})
+    
+    character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
     week = character.get('week', 1)
     question_index = character.get('question_index', 0)
     
@@ -150,7 +154,7 @@ def answer():
     data = request.get_json()
     option = data.get('option')
     
-    character = mongo.db.characters.find_one({'_id':(session['character_id'])})
+    character = mongo.db.characters.find_one({'_id':ObjectId(session['character_id'])})
     
     # Update health
     new_physical = max(0, min(100, character['physical_health'] + option['physical']))
@@ -188,7 +192,10 @@ def end():
     if 'character' not in session:
         return redirect(url_for('create'))
     
-    character = session['character']
+    character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
+    if not character:
+        return redirect(url_for('create'))
+    
     return render_template("end.html", character=character)
 
 
@@ -199,7 +206,7 @@ def submit_reflection():
     if 'character_id' not in session:
        return jsonify({'error': 'no character'})
     
-    character = mongo.db.characters.find_one({'_id':(session['character_id'])})
+    character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
     
     avg_health = (character['physical_health'] + character['mental_health']) / 2
     status = 'thriving' if avg_health >= 70 else 'struggling' if avg_health >= 40 else 'critical'
@@ -224,7 +231,6 @@ def reflections():
     all_reflections = list(mongo.db.reflections.find().sort('created_at', -1))
     return render_template("reflections.html", reflections= all_reflections)
     
-
 
 if __name__ == '__main__':
     app.run(debug=True)
