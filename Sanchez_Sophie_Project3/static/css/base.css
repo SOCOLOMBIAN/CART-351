@@ -2,9 +2,13 @@
     margin: 0;
     padding:0;
     box-sizing: border-box;
-    background-color: rgb(215, 215, 249);
 }
 
+body {
+    background-color: rgb(215, 215, 249);
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    transition: background-color 1s ease;
+}
 
 footer {
     text-align: center;
@@ -13,191 +17,100 @@ footer {
     font-size: 20px;
 }
 
+/* Information Page */
 .information-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    min-height: 80vh;
+    background-image: url('/static/images/nuero.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 .text {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: rgb(0, 60, 116);
-    font-size:1.8rem;
+    font-size: 2rem;
     text-align: center;
     padding: 2rem;
+    max-width: 800px;
 }
 
 .space-prompt{
     color: rgb(0, 60, 116);
-    font-weight:bold;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
+/* Character Creation Page */
 .creation-container {
     max-width: 1000px;
-    margin:2rem auto;
+    margin: 2rem auto;
     padding: 2rem;
-    text-align:center;
+    text-align: center;
 }
 
 .creation-container h1 {
-    color: rgb(215, 215, 249);
-    font-size: 2rem;
+    color: rgb(0, 60, 116);
+    font-size: 2.5rem;
     margin-bottom: 1rem;
 }
 
 .intro-text {
-    color: #000a17;
-    font-size: 1.1rem;
+    color: rgb(0, 60, 116);
+    font-size: 1.2rem;
     margin-bottom: 2rem;
 }
 
-.game-container {
-    max-width: 800px;
+#characterCanvas {
     margin: 2rem auto;
-    padding:2rem;
-    text-align: center;
+    display:block;
+    background: rgb(0, 0, 0);
 }
 
-.end-game-container {
-    max-width: 800px;
+.character-form {
+    max-width: 300px;
     margin: 2rem auto;
-    padding: 2rem;
-    text-align: center;
 }
 
-.result-header {
-    padding: 2rem;
-    border-radius: 15px;
-    margin-bottom: 2rem;
+.input-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
 }
 
-.result-header.status-passed {
-    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-}
-
-.result-header.status-better {
-    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
-}
-
-.result-header.status-struggled {
-    background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%);
-}
-
-.result-header h1 {
-    color: rgb(0, 60, 116);
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-}
-
-.result-header h2 {
-    color: rgb(0, 60, 116);
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-.character-name {
+.input-group label {
+    display: block;
     color: rgb(0, 60, 116);
     font-size: 1.1rem;
-    font-style: italic;
-}
-
-.final-stats {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin: 2rem 0;
-    flex-wrap: wrap;
-}
-
-.stat-card {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 1.5rem;
-    border-radius: 15px;
-    border: 2px solid rgb(0, 60, 116);
-    min-width: 150px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stat-content h3 {
-    color: rgb(0, 60, 116);
-    font-size: 1rem;
     margin-bottom: 0.5rem;
 }
 
-.stat-value {
-    font-size: 2rem;
-    font-weight: bold;
-    color: rgb(0, 60, 116);
-}
-
-.reflection-section {
-    background: rgba(255, 255, 255, 0.8);
-    padding: 2rem;
-    border-radius: 15px;
-    margin: 2rem 0;
-    border: 2px solid rgb(0, 60, 116);
-}
-
-.reflection-section h2 {
-    color: rgb(0, 60, 116);
-    margin-bottom: 1rem;
-}
-
-.reflection-section p {
-    color: rgb(0, 60, 116);
-    margin-bottom: 1rem;
-}
-
-#reflectionText {
+.input-group input {
     width: 100%;
-    padding: 1rem;
-    border: 2px solid rgb(0, 60, 116);
-    border-radius: 10px;
+    padding: 0.8rem;
     font-size: 1rem;
-    font-family: inherit;
-    resize: vertical;
-    margin-bottom: 1rem;
+    border: 2px solid rgb(10, 10, 10);
+    border-radius: 8px;
+    background: rgb(255, 255, 255);
 }
 
-.submit-btn {
+.input-group input:focus {
+    outline:invert;
+    border-color: rgb(0, 80, 140);
+}
+
+.start-btn {
     padding: 1rem 2rem;
-    font-size: 1.1rem;
-    background: rgb(0, 60, 116);
+    font-size: 1.2rem;
+    background: rgb(42, 2, 47);
     color: white;
+    text-align: center;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    margin-top: 1rem;
 }
 
-.submit-btn:hover {
-    background: rgb(0, 80, 140);
-    transform: translateY(-2px);
-}
-
-.navigation-btns {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.nav-btn {
-    padding: 1rem 1.5rem;
-    background: rgba(255, 255, 255, 0.9);
-    color: rgb(0, 60, 116);
-    border: 2px solid rgb(0, 60, 116);
-    border-radius: 10px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.nav-btn:hover {
-    background: rgb(0, 60, 116);
-    color: white;
-    transform: translateY(-2px);
-}

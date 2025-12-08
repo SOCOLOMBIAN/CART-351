@@ -117,32 +117,10 @@ def game():
     if not character:
         return redirect(url_for('create'))
       
-    return render_template("game.html", character=character)
+      #all the questions 
+    return render_template("game.html", character=character, questions= WEEKLY_QUESTIONS)
 
-# route for the current question
-@app.route("/get_question")
-def get_question():
-    if 'character_id'not in session:
-        return jsonify({'error': 'no character'})
-    
-    character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
-    week = character.get('week', 1)
-    question_index = character.get('question_index', 0)
-    
-    #return if the questions are done 
-    if week > len(WEEKLY_QUESTIONS):
-        return jsonify({'game_over': True})
-    
-    questions = WEEKLY_QUESTIONS.get(week, [])
-    if question_index >= len(questions):
-        return jsonify({'week_complete': True, 'week': week})
-    
-    return jsonify({
-        'question': questions[question_index],
-        'week': week,
-        'question_num': question_index + 1,
-        'total_questions': len(questions)
-    })    
+
 
 @app.route("/answer", methods=['POST'])
 def answer():
