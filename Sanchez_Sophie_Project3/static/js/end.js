@@ -12,7 +12,7 @@ submitBtn.addEventListener('click', async () => {
     //main logic to submit the personal reflections after finish the game 
     try {
         submitBtn.disabled = true;
-        submitBtn.textContent = 'Sharing...';
+        submitBtn.textContent = 'Sharing.';
         
         const response = await fetch('/submit_reflection', {
             method: 'POST',

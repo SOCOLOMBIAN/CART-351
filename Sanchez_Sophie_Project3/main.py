@@ -105,9 +105,7 @@ def character():
     # save on mongo
     result = mongo.db.characters.insert_one(character_data)
     session['character_id'] = str(result.inserted_id)
-    # back to js
     return jsonify({"success": True})
-
 
 #route to start the game for the questions
 @app.route("/game")

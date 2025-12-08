@@ -60,6 +60,7 @@ class Shadow {
         // Eyes positioning
         const eyeY = -15;  
         const eyeSpacing = 18;  
+
         // Draw eye
         ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
         ctx.beginPath();
@@ -79,7 +80,7 @@ class Shadow {
         ctx.fill();
 
         // Pupils 
-        ctx.fillStyle = 'rgba(50, 50, 100, 1)';  
+        ctx.fillStyle = 'rgba(0, 0, 0, 1)';  
         ctx.beginPath();
         ctx.arc(-eyeSpacing, eyeY, 4, 0, Math.PI * 2);
         ctx.fill();
@@ -124,7 +125,7 @@ const nameInput = document.getElementById('characterName');
 const degreeInput = document.getElementById('characterDegree');
 
 startButton.addEventListener('click', async () => {
-    const name = nameInput.value.trim();
+    const name = nameInput.value.trim(); // this part was improve 
     const degree = degreeInput.value.trim();
 
     if (!name || !degree) {
@@ -143,7 +144,7 @@ startButton.addEventListener('click', async () => {
         
         const data = await response.json();
         
-        if (data.good) {
+        if (data.success) {
             window.location.href = '/game';
         }
     } catch (error) {
