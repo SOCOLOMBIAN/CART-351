@@ -122,44 +122,40 @@ def game():
 
 
 
-@app.route("/answer", methods=['POST'])
-def answer():
+@app.route("/submit_answer", methods=['POST'])
+def submit_answers():
     if 'character_id' not in session:
         return jsonify({'error': 'no character'})
     
     data = request.get_json()
-    option = data.get('option')
+    answers = data.get('answers', [])
     
     character = mongo.db.characters.find_one({'_id':ObjectId(session['character_id'])})
     
-    # Update health
-    new_physical = max(0, min(100, character['physical_health'] + option['physical']))
-    new_mental = max(0, min(100, character['mental_health'] + option['mental']))
-    
-    # Update character
-    question_index = character.get('question_index', 0) + 1
-    week = character.get('week', 1)
-    
-    update_data = {
-        'physical_health': new_physical,
-        'mental_health': new_mental,
-        'question_index': question_index
-    }
-    
-    # Check if week is complete
-    if question_index >= len(WEEKLY_QUESTIONS.get(week, [])):
-        update_data['week'] = week + 1
-        update_data['question_index'] = 0
-    
+    # Calculate total health changes
+    total_physical = character['physical_health']
+    total_mental = character['mental_health']
+   
+    for answer in answers:
+        total_physical += answer['physical']
+        total_mental += answer['mental']
+        
+    total_physical = max(0, min(100, total_physical))
+    total_mental = max(0, min(100, total_mental))
+
     mongo.db.characters.update_one(
-        {'_id': (session['character_id'])},
-        {'$set': update_data}
+        {'_id': ObjectId(session['character_id'])},
+        {'$set': {
+            'physical_health': total_physical,
+            'mental_health': total_mental,
+            'answers': answers
+        }}
     )
     
     return jsonify({
         'success': True,
-        'physical_health': new_physical,
-        'mental_health': new_mental
+        'physical_health': total_physical,
+        'mental_health': total_mental
     })
 
 #added route for game ending     
@@ -185,7 +181,7 @@ def submit_reflection():
     character = mongo.db.characters.find_one({'_id': ObjectId(session['character_id'])})
     
     avg_health = (character['physical_health'] + character['mental_health']) / 2
-    status = 'thriving' if avg_health >= 70 else 'struggling' if avg_health >= 40 else 'critical'
+    status = 'good' if avg_health >= 70 else 'struggling' if avg_health >= 40 else 'improvement'
     
     reflection_data = {
         'character_name': character['name'],

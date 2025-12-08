@@ -114,3 +114,449 @@ footer {
     margin-top: 1rem;
 }
 
+
+
+
+
+
+
+.game-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.game-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.game-header h1 {
+    color: rgb(0, 60, 116);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.degree-text {
+    color: rgb(0, 60, 116);
+    font-size: 1.1rem;
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.instructions {
+    color: rgb(0, 60, 116);
+    font-size: 1rem;
+    margin-top: 1rem;
+}
+
+.all-questions {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.question-card {
+    background: rgba(255, 255, 255, 0.7);
+    border: 2px solid rgb(0, 60, 116);
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.question-header {
+    margin-bottom: 1rem;
+}
+
+.week-label {
+    display: inline-block;
+    background: rgb(0, 60, 116);
+    color: white;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.question-text {
+    color: rgb(0, 60, 116);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.question-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.option-btn {
+    padding: 1rem;
+    font-size: 1rem;
+    background: white;
+    color: rgb(0, 60, 116);
+    border: 2px solid rgb(0, 60, 116);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.3s ease;
+}
+
+.option-btn:hover {
+    background: rgba(0, 60, 116, 0.1);
+    transform: translateX(5px);
+}
+
+.option-btn.selected {
+    background: rgb(0, 60, 116);
+    color: white;
+    font-weight: bold;
+}
+
+.submit-section {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.submit-all-btn {
+    padding: 1.2rem 3rem;
+    font-size: 1.3rem;
+    background: rgb(100, 100, 100);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: not-allowed;
+    transition: all 0.3s ease;
+}
+
+.submit-all-btn.ready {
+    background: rgb(0, 60, 116);
+    cursor: pointer;
+}
+
+.submit-all-btn.ready:hover {
+    background: rgb(0, 80, 140);
+    transform: scale(1.05);
+}
+
+.submit-all-btn:disabled {
+    opacity: 0.6;
+}
+
+.submit-hint {
+    color: rgb(0, 60, 116);
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* End Game Page */
+.end-game-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.result-header {
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.result-header.status-passed {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.result-header.status-better {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+}
+
+.result-header.status-struggled {
+    background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 100%);
+}
+
+.result-header h1 {
+    color: rgb(0, 60, 116);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.result-header h2 {
+    color: rgb(0, 60, 116);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.character-name {
+    color: rgb(0, 60, 116);
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.final-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid rgb(0, 60, 116);
+    min-width: 150px;
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-content h3 {
+    color: rgb(0, 60, 116);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: rgb(0, 60, 116);
+}
+
+.reflection-section {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    border: 2px solid rgb(0, 60, 116);
+}
+
+.reflection-section h2 {
+    color: rgb(0, 60, 116);
+    margin-bottom: 1rem;
+}
+
+.reflection-section p {
+    color: rgb(0, 60, 116);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+#reflectionText {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid rgb(0, 60, 116);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    margin-bottom: 1rem;
+    min-height: 120px;
+}
+
+.submit-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    background: rgb(0, 60, 116);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: rgb(0, 80, 140);
+}
+
+.navigation-btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: rgb(0, 60, 116);
+    border: 2px solid rgb(0, 60, 116);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.nav-btn:hover {
+    background: rgb(0, 60, 116);
+    color: white;
+}
+
+/* Reflections Page */
+.reflections-page {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.reflections-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.reflections-header h1 {
+    color: rgb(0, 60, 116);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: rgb(0, 60, 116);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.stats-bar {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: rgb(0, 60, 116);
+}
+
+.stat-label {
+    display: block;
+    font-size: 1rem;
+    color: rgb(0, 60, 116);
+}
+
+.reflections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.reflection-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgb(0, 60, 116);
+    border-radius: 15px;
+    padding: 1.5rem;
+}
+
+.reflection-card.status-thriving {
+    border-left: 6px solid #51cf66;
+}
+
+.reflection-card.status-struggling {
+    border-left: 6px solid #ffd43b;
+}
+
+.reflection-card.status-critical {
+    border-left: 6px solid #ff6b6b;
+}
+
+.card-header {
+    margin-bottom: 1rem;
+}
+
+.character-info h3 {
+    color: rgb(0, 60, 116);
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.degree {
+    color: rgb(0, 60, 116);
+    font-size: 0.95rem;
+    font-style: italic;
+}
+
+.health-stats {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.mini-stat {
+    background: rgba(0, 60, 116, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    color: rgb(0, 60, 116);
+}
+
+.reflection-text {
+    margin: 1rem 0;
+}
+
+.reflection-text p {
+    color: rgb(0, 60, 116);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.card-footer {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 60, 116, 0.2);
+}
+
+.timestamp {
+    color: rgb(0, 60, 116);
+    font-size: 0.9rem;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    grid-column: 1 / -1;
+}
+
+.empty-state h2 {
+    color: rgb(0, 60, 116);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state p {
+    color: rgb(0, 60, 116);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.navigation-section {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+@media (max-width: 768px) {
+    .reflections-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-bar {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .final-stats {
+        flex-direction: column;
+    }
+}

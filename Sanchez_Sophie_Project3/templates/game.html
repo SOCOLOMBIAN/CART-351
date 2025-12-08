@@ -5,41 +5,40 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="game-container">
     <div class="game-header">
         <h1>{{ character.name }}'s Semester Journey</h1>
         <p class="degree-text">{{ character.degree }}</p>
+        <p class="instructions">Answer all questions based on how you would handle each situation</p>
     </div>
 
-    <div class="health-bars">
-        <div class="health-item">
-            <span class="health-label">❤️ Physical Health</span>
-            <div class="health-bar">
-                <div id="physicalBar" class="health-fill physical" style="width: {{ character.physical_health }}%"></div>
-                <span id="physicalText" class="health-value">{{ character.physical_health }}</span>
+    <div class="all-questions">
+        {% for question in questions %}
+        <div class="question-card" data-week="{{ question.week }}">
+            <div class="question-header">
+                <span class="week-label">Week {{ question.week }}</span>
+            </div>
+            
+            <p class="question-text">{{ question.q }}</p>
+            
+            <div class="question-options">
+                {% for option in question.options %}
+                <button class="option-btn" 
+                        data-physical="{{ option.physical }}" 
+                        data-mental="{{ option.mental }}">
+                    {{ option.text }}
+                </button>
+                {% endfor %}
             </div>
         </div>
-
-    <div class="health-item">
-            <span class="health-label">🧠 Mental Health</span>
-            <div class="health-bar">
-                <div id="mentalBar" class="health-fill mental" style="width: {{ character.mental_health }}%"></div>
-                <span id="mentalText" class="health-value">{{ character.mental_health }}</span>
-            </div>
-        </div>
+        {% endfor %}
     </div>
 
-    <div class="week-indicator">
-        <h2 id="weekText">Week <span id="weekNum">{{ character.week }}</span></h2>
-    </div>
-
-
-    <div class="question-container">
-        <p id="questionText" class="question"></p>
-        
-        <div id="optionsContainer" class="options">
-        </div>
+    <div class="submit-section">
+        <button id="submitAll" class="submit-all-btn" disabled>
+            Submit All Answers
+        </button>
+        <p class="submit-hint">Answer all questions to continue</p>
     </div>
 </div>
 {% endblock %}
