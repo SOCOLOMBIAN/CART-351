@@ -100,6 +100,7 @@ def character():
         'mental_health': 80,
         'week': 1,
         'question_index': 0,
+        'answers': [],
         'created_at': datetime.now()
     }
     # save on mongo
@@ -209,7 +210,7 @@ def submit_reflection():
 def reflections():
     all_reflections = list(mongo.db.reflections.find().sort('created_at', -1))
     
-    # Calculate proper average health
+    # Calculate proper average health this was help with IA
     total_reflections = len(all_reflections)
     if total_reflections > 0:
         total_physical = sum(r['final_physical'] for r in all_reflections)

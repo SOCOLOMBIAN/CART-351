@@ -18,33 +18,40 @@
         {% set message = 'you need more time for you' %}
     {% endif %}
 
-    <div class="result-header status-{{ status }}">
-        <h1> Semester Complete </h1>
+  <div class="result-header status-{{ status }}">
+        <h1>Semester Complete</h1>
         <h2>{{ message }}</h2>
         <p class="character-name">{{ character.name }} - {{ character.degree }}</p>
     </div>
 
     <div class="final-stats">
         <div class="stat-card">
-        <div class="stat-icon">❤️</div>
-        <div class="stat-content">
-        <h3>Physical Health</h3>
-            <div class="stat-value">{{ character.physical_health|round|int }}</div>
+            <span class="stat-icon">❤️</span>
+            <div class="stat-content">
+                <h3>Physical Health</h3>
+                <div class="stat-bar-container">
+                    <div class="stat-bar" style="width: {{ character.physical_health }}%"></div>
+                    <span class="stat-value">{{ character.physical_health|round|int }}</span>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="stat-card">
-        <div class="stat-icon">🧠</div>
-        <div class="stat-content">
-        <h3>Mental Health</h3>
-            <div class="stat-value">{{ character.mental_health|round|int }}</div>
+        <div class="stat-card">
+            <span class="stat-icon">🧠</span>
+            <div class="stat-content">
+                <h3>Mental Health</h3>
+                <div class="stat-bar-container">
+                    <div class="stat-bar" style="width: {{ character.mental_health }}%"></div>
+                    <span class="stat-value">{{ character.mental_health|round|int }}</span>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="reflection-section">
         <h2>Share Your Experience</h2>
-        <p>How was your semester journey, give some advice to other people?</p>
-        <textarea id="reflectionText" placeholder="Your reflection here..." rows="5"></textarea>
+        <p>How was your journey? What advice would you give to others?</p>
+        <textarea id="reflectionText" placeholder="Write your thoughts here..."></textarea>
         <button id="submitReflection" class="submit-btn">Share My Story</button>
     </div>
     
