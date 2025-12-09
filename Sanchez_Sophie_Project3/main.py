@@ -2,7 +2,7 @@ from flask import Flask,render_template,request,redirect, url_for,session,jsonif
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
 from datetime import datetime
-from bson.objectid import ObjectId
+from bson.objectid import ObjectId #using this to avoid problems if name are repated, suggested by IA because i was getting errors
 import os
 
 load_dotenv()
@@ -121,8 +121,7 @@ def game():
       #all the questions 
     return render_template("game.html", character=character, questions= WEEKLY_QUESTIONS)
 
-
-
+#route for the answers on the game page 
 @app.route("/submit_answer", methods=['POST'])
 def submit_answers():
     if 'character_id' not in session:
@@ -159,7 +158,7 @@ def submit_answers():
         'mental_health': total_mental
     })
 
-#added route for game ending     
+#added route for game end page to visualize the info and put the reflection   
 @app.route("/end")
 def end():
     if 'character_id' not in session:
@@ -183,7 +182,7 @@ def submit_reflection():
     
     avg_health = (character['physical_health'] + character['mental_health']) / 2
     
-    # Fixed status calculation
+    # Fixed status calculation 
     if avg_health >= 60:
         status = 'thriving'
     elif avg_health >= 30:
@@ -210,7 +209,7 @@ def submit_reflection():
 def reflections():
     all_reflections = list(mongo.db.reflections.find().sort('created_at', -1))
     
-    # Calculate proper average health this was help with IA
+    # Calculate proper average health this was help with IA because i didn't know how to make it 
     total_reflections = len(all_reflections)
     if total_reflections > 0:
         total_physical = sum(r['final_physical'] for r in all_reflections)

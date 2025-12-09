@@ -28,6 +28,7 @@ function updateBackground() {
     document.body.style.transition = 'background 1.5s ease';
 }
 
+
 function calculateProjectedHealth() {
     let projectedPhysical = STARTING_PHYSICAL; 
     let projectedMental = STARTING_MENTAL;
@@ -36,7 +37,7 @@ function calculateProjectedHealth() {
         projectedPhysical += answer.physical;
         projectedMental += answer.mental;
     });
-    
+    // this part was calculate with IA to get the calculation of the health bars 
     projectedPhysical = Math.max(0, Math.min(100, projectedPhysical));
     projectedMental = Math.max(0, Math.min(100, projectedMental));
     
@@ -89,13 +90,14 @@ function checkIfComplete() {
     const totalQuestions = questionCards.length;
     const submitBtn = document.getElementById('submitAll');
     
+    // this part is important since it leads the next step after getting all the responses 
     if (allAnswers.length === totalQuestions) {
         submitBtn.disabled = false;
         submitBtn.classList.add('ready');
         
         const hint = document.querySelector('.submit-hint');
         if (hint) {
-            hint.textContent = ` Ready to submit!  ${Math.round(currentPhysical)} | 🧠 ${Math.round(currentMental)}`;
+            hint.textContent = ` Ready to submit! ♡ ${Math.round(currentPhysical)} | ☺︎ ${Math.round(currentMental)}`;
             hint.style.color = 'rgb(0, 60, 116)';
             hint.style.fontWeight = 'bold';
             hint.style.fontSize = '1.1rem';
@@ -129,7 +131,7 @@ document.getElementById('submitAll').addEventListener('click', async function() 
         const data = await response.json();
         
         if (data.success) {
-            this.textContent = 'Complete! Redirecting...';
+            this.textContent = 'Complete, Redirecting...';
             
             setTimeout(() => {
                 window.location.href = '/end';

@@ -13,7 +13,7 @@
             </div>
             
             <div class="stat-item">
-                <span class="stat-number">{{ ((reflections|sum(attribute='final_physical') + reflections|sum(attribute='final_mental')) / (reflections|length * 2))|round|int if reflections|length > 0 else 0 }}</span>
+                <span class="stat-number">{{ ((reflections|sum(attribute='final_physical') + reflections|sum(attribute='final_mental')) / (reflections|length * 2))|round|int if reflections|length > 0 else 0 }}</span> 
                 <span class="stat-label">Average Health</span>
             </div>
         </div>

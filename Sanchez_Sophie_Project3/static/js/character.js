@@ -125,7 +125,7 @@ const nameInput = document.getElementById('characterName');
 const degreeInput = document.getElementById('characterDegree');
 
 startButton.addEventListener('click', async () => {
-    const name = nameInput.value.trim(); // this part was improve 
+    const name = nameInput.value.trim(); 
     const degree = degreeInput.value.trim();
 
     if (!name || !degree) {
