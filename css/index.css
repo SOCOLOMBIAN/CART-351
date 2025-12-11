@@ -5,9 +5,9 @@
 }
 
 body {
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   line-height: 1.6;
-  background-image:url("/images/else.jpg");
+  background-image: url("/images/else.jpg");
   background-repeat: no-repeat;
   background-position: center center;
   background-attachment: fixed;
@@ -16,72 +16,42 @@ body {
   padding: 20px;
 }
 
-
 /* Header Styles */
 header {
   border-color: #000000;
   color: white;
   font-weight: bolder;
   text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-header::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 109, 5, 0.1) 0%, transparent 70%);
-  animation: pulse 15s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
 }
 
 header h2 {
   font-size: 2.5em;
   margin-bottom: 10px;
-  position: relative;
-  z-index: 1;
   letter-spacing: 2px;
 }
 
 header h3 {
   font-size: 1.5em;
   margin-bottom: 20px;
-  position: relative;
-  z-index: 1;
-  opacity: 0.9;
 }
 
 header h4 {
   font-size: 1.1em;
   margin-top: 15px;
-  position: relative;
-  z-index: 1;
   font-weight: 400;
 }
 
 header p {
-  position: relative;
-  z-index: 1;
   margin-top: 15px;
-  opacity: 0.95;
 }
 
 header a {
   color: #fff;
   text-decoration: underline;
-  transition: opacity 0.3s ease;
 }
 
 header a:hover {
-  opacity: 0.8;
+  color: #ccc;
 }
 
 /* Main Content */
@@ -96,24 +66,25 @@ main > p:first-child {
 
 main > p:first-child a {
   display: inline-block;
-  background: linear-gradient(135deg, #000000 1000%, #cf9fff 7%);
+  background: linear-gradient(135deg, #000000 0%, #cf9fff 100%);
   color: white;
   padding: 15px 40px;
   text-decoration: none;
   border-radius: 10px;
   font-weight: 600;
   font-size: 1rem;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
+main > p:first-child a:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
 
 /* Section Headings */
 main > p {
   font-size: 1.4em;
   font-weight: 700;
   color: #fff1f1;
-  background: radial-gradient(circle, rgba(255, 109, 5, 0.1) 0%, transparent 70%);
   margin-top: 40px;
   margin-bottom: 5px;
   padding-bottom: 5px;
@@ -130,21 +101,18 @@ ul {
 }
 
 li {
-  background: rgba(255, 169, 234, 0.264);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 169, 234, 0.3);
   margin: 10px 0;
   padding: 18px 25px;
   border-radius: 12px;
   border: 2px solid rgb(0, 0, 0);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-
 li:hover {
-  background: rgba(255, 255, 255, 0.773);
-  transform: translateX(5px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.8);
+  transform: translateX(5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 li a {
@@ -152,7 +120,6 @@ li a {
   text-decoration: none;
   font-weight: 800;
   display: block;
-  transition: color 0.3s ease;
 }
 
 li a:hover {
@@ -162,7 +129,6 @@ li a:hover {
 /* Footer */
 footer {
   text-align: center;
-  background: radial-gradient(circle, rgba(255, 109, 5, 0.1) 0%, transparent 70%);
   color: white;
   padding: 25px;
 }
@@ -171,7 +137,7 @@ footer p {
   font-size: 0.95em;
 }
 
-/* Responsive */
+/* trying to make it work on phones */
 @media (max-width: 768px) {
   body {
     padding: 10px;
