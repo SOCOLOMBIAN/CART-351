@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>This is my CART 351 journal</title>
+        <link rel="stylesheet" href="/css/journal.css">
+    </head>
+
+    <body>
+       <header>
+        <h1>This is my CART 351 Journal</h1>
+        <p>In this journal I will document my learning in this class. I will explore the different tools that 
+            are offered in class as well as doing my own research 🙂</p>
+       </header>
+    
+       <section id="semester-projects"> 
+           <h2>Semester Projects Overview</h2>
+           <ul class="project-list">
+                <li>Project 1: due date October 6th (10%)</li>
+                <li>Project 2: due date November 3rd (20%)</li>
+                <li>Project 3: due date December 8th (25%)</li>
+           </ul>
+       </section>
+
+       <section id="weekly-entries">
+           <h2>Weekly Journal Entries</h2>
+    
+           <article class="entry">
+               <h3 class="entry-date"> Week 1 - September 8, 2025</h3>
+               <p>Started on the course outline and the presentation of the different projects for the rest of the semester. Also 
+               I am taking all the assignments that I will need to submit from here to the end of the semester. I will need to do a list
+               of everything with the dates.</p>
+           </article>
+
+           <article class="entry">
+               <h3 class="entry-date">Week 2 - September 15, 2025</h3>
+               <p>In this class we learned how to setup Python in our terminal. It was a useful class
+                   to get a better understanding of the basic steps before writing any code in Python.</p>
+
+               <h4>Important things to know when setting the environment in Python</h4>
+               <ul>
+                   <li>Get the miniConda for Python</li>
+                   <li>Open the file and open terminal: new terminal</li>
+                   <li>python3 hello_cart351.py</li>
+                   <li>Then if we want to create the virtual environment, on the terminal: conda create --name filenamehere python=3.13</li>
+                   <li>Activate the environment: conda activate filenamehere</li>
+                   <li>Then if using a package manager: pip install request</li>
+               </ul>
+
+               <div class="image-row">
+                  <img src="images/september8_1.png" alt="Screenshot of the space setup">
+                  <img src="images/september8_2.png" alt="Screenshot of the space setup">
+               </div>
+           </article>
+
+           <article class="entry">
+               <h3 class="entry-date">Week 3 - September 29, 2025</h3>
+               <p>This class was divided into two parts: <strong>Flask Part 1 and Flask Part 2</strong>, in which
+                   I learned that Flask is a production environment that helps the user to build web applications
+                   in a simpler way because it creates APIs, handles forms, user logins, and databases.</p>
+               <p>Learning the first part of Flask was very easy to understand. I think it is a good
+                   tool because it is not over complicated and follows the same structure each time. It 
+                   is my first time experimenting with it and I think I feel more comfortable working in
+                   this type of environment. I feel comfortable using this structure for future projects.</p>
+               
+               <h4>Important things that I noticed using Flask</h4>
+               <h5>Very important to have the right setup working:</h5>
+               <ul> 
+                   <li>Always setup environment and pip install flask on the terminal (see image)</li>
+                   <li>Defining a route: the route will be the HTML file by @app.route("/x"), def x(): then app.run()</li>
+                   <li>Into the python.main: importing flask app (see images)</li>
+                   <li>The templates folder is important to keep all files organized (HTML)</li>   
+                   <li><strong>Jinja</strong> is used to pass variables from main.py to the HTML using {{}}</li>  
+               </ul>
+
+                <div class="image-row">
+                  <img src="images/september29_2.png" alt="Screenshot of flask setup">
+               </div>
+
+               <p> As updating this journal, i went only to search other resources that will help me to build the 
+                    website, i was looking ways to improve the layout and appeareance of my page journal as sematic elements. 
+               </p>
+                <div class="image-row">
+                  <img src="images/september29_1.png" alt="Screenshot of examples of HTML">
+
+           </article>
+
+           <article class="entry">
+                <h3 class="entry-date">Week 4 - October 20, 2025</h3>
+                <p>In this week we continue learning the Flask, in this module we continue working 
+                    with templates with jinja, this way all the html files share the same templates</p>
+
+                <h4>Important information of using the jinja templates</h4>
+                <ul> 
+                   <li>Always setup environment and pip install flask on the terminal (see image)</li>
+                   <li><strong>Jinja</strong> uses {% extend "base.html" %} and {% extend block %}</li>
+                   <li> Also uses {% block content %} and {% endfor %}, this is use to put the content inside 
+                        on the html file for the child templates of the main html file. </li> 
+                    <li>Also we need to link this new html page to the html itself with this format 
+                         href="{{url_for('addPlantData')}}">Add Plant </li>  
+               </ul>
+
+           </article>
+
+           <article class="entry">
+                <h3 class="entry-date">Week 5 - October 27, 2025</h3>
+                <p>In this week we continue learning the Flask, this module was really interesting, i learn a lot of how to
+                    have different sessions from the user, SAlso we did implement js to fetch for the access the data. Also we learn about the ways to 
+                    get data from the user using the Post and GET method 
+                </p>
+
+                <h4>Important information that i learned</h4>
+                <ul> 
+                <li> This week material was really interesting since i have now a better understanding on what is needed to get the flask application
+                    and the user storage of information working together. This material helped me to have a better understanding on the things that i am able to do in 
+                    the future using the storage of information. 
+                </li>
+
+               </ul>
+
+           </article>
+
+            <article class="entry">
+                <h3 class="entry-date">Week 6 - November 3, 2025</h3>
+                <p>In this week we continue learning the Flask, this module allowed me to work with the reading of the text and how and in wich way they will be displayed
+                    and also to write the information to get update and stored. Also in this class we combine the Json communication a way to transform a dictionary to a Json
+                    object. this remain me at the beggining of the first classes that we used dictionaries to get the information. 
+                </p>
+
+                <h4>Important information that i learned</h4>
+                <ul> 
+                <li> Even though Sabine make this class very easy to understand i wasn't understanding the part where 
+                    js entered as a new information, i was lost on how the information will be communicated into each one of
+                    the files.
+                </li>
+
+               </ul>
+
+           </article>
+
+                <article class="entry">
+                <h3 class="entry-date">Week 7 - November 10, 2025</h3>
+                <p> Flask AND mongoDB yeiii, so this was my first time using this cloud service to store my own information into a database,
+                    i was really happy and glad that i was learning this, i really enjoy learning how to store the information and connect everything
+                    together. Even though i was having some issues creating the name and the password, i was feeling confortable because i got Sabine's 
+                    help to resolve this issue. 
+                </p>
+
+                <h4> This is a good opportunity for later projects</h4>
+                <ul> 
+                <li> Is important to learnd that i need to import this command to set my .env file where my password,user and the name of the folder will 
+                    appear, Also to have the from dotenv import load_dotenv and install on my terminal the pip install python-dotenv. This class 
+                    was really interesting to learn and experience how to storage the information not in our folders files 
+                    but in our own database.
+                </li>
+
+               </ul>
+           </article>
+
+
+            <article class="entry">
+                <h3 class="entry-date">Week 8 - November 17, 2025</h3>
+                <p>  FLASK and Websockets, this was the last class and to finish the semester we learned how to using this new 
+                    technology to have a communication between the client and the server and receive the responses in real time </p>
+
+                <h4> interesting tool that can be use in the feature </h4>
+                <ul> 
+                <li> this introduction to this technology was important  since even if i am not doing any project right 
+                    now on this for the feature is is a interesting implementation if i want to use it on game or in a type of narrative 
+                    Also because the setting is easy to understand. 
+                </li>
+               </ul>
+           </article>
+
+           <h4> I really enjoyed This semester, i learned a lot and the most important part is that i was able to challenge myself 
+            doing projects, This class was very interesting and i think that is important as a future programmer to have this knowledge.
+            I feel more confortable now using Python, something i didn't know i will be able to use. But this course structure 
+            and the constant help from Sabine make it easier and fun to learn. 
+           </h2>
+
+
+    
+       </section>
+    </body> 
+</html>
