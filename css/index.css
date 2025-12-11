@@ -137,25 +137,3 @@ footer p {
   font-size: 0.95em;
 }
 
-/* trying to make it work on phones */
-@media (max-width: 768px) {
-  body {
-    padding: 10px;
-  }
-  
-  header, main, footer {
-    padding: 25px;
-  }
-  
-  header h2 {
-    font-size: 2em;
-  }
-  
-  header h3 {
-    font-size: 1.2em;
-  }
-  
-  main > p {
-    font-size: 1.2em;
-  }
-}
